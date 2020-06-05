@@ -1,10 +1,11 @@
 // Dependencies
+const path = require("path")
 const express = require("express");
-const routes = require("./routes");
+// const routes = require("./routes");
 
 // Set up the express app
 const app = express();
-var PORT = process.send.PORT || 3001;
+var PORT = process.env.PORT || 3001;
 
 
 // Static directory
@@ -18,12 +19,14 @@ app.use(express.json());
 const db = require("./models");
 
 // Routes
-app.use(routes);
+// app.use(routes);
+require("./routes/html-routes")(app)
+
 
 // Sync sequelize models
-db.sequelize.sync().then(function () {
+// db.sequelize.sync().then(function () {
     // Starting express app
     app.listen(PORT, function () {
         console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
     })
-})
+// })
