@@ -22,6 +22,9 @@ function NavBar() {
                     <Link to="/profile" className={location.pathname === "/search" ? "nav-link active" : "nav-link"}>
                         Profile
                     </Link>
+                    <Link to="/login" className={location.pathname === "/login" ? "nav-link active" : "nav-link"}>
+                        Login
+                    </Link>
                 </ul>
             </div>
         </nav>

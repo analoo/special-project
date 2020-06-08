@@ -1,7 +1,8 @@
 // Dependencies
 const path = require("path")
 const express = require("express");
-// const routes = require("./routes");
+const routes = require("./routes");
+const bcrypt = require("bcrypt")
 
 // Set up the express app
 const app = express();
@@ -19,14 +20,12 @@ app.use(express.json());
 const db = require("./models");
 
 // Routes
-// app.use(routes);
-require("./routes/html-routes")(app)
-
+app.use(routes);
 
 // Sync sequelize models
-// db.sequelize.sync().then(function () {
+db.sequelize.sync().then(function () {
     // Starting express app
     app.listen(PORT, function () {
         console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
     })
-// })
+})
