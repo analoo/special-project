@@ -12,7 +12,7 @@ function Signup() {
         axios.post("/auth/register", {
             name: name,
             email: email,
-            uid: password,
+            password: password,
         }).then(res => console.log(res))
             .catch(err => console.log(err))
     }

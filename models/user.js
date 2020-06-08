@@ -30,7 +30,12 @@ module.exports = function(sequelize, DataTypes) {
         uid: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+         // password
+        //  password: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false
+        // }
     });
 
     User.associate = models => {

@@ -1,7 +1,8 @@
 const router = require("express").Router();
-const passport = require("passport")
 const bcrypt = require("bcrypt")
 const db = require("../models");
+const passport = require("passport")
+
 
 
 // file path /auth/
@@ -34,7 +35,7 @@ router
     // inside post, we need an async function to wait for the hashing of password
     .post(async (req, res) => {
         try {
-            const hashedPassword = await bcrypt.hash(req.body.uid, 10)
+            const hashedPassword = await bcrypt.hash(req.body.password, 10)
             db.User.create({
                 name: req.body.name,
                 email: req.body.email,
