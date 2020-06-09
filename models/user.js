@@ -1,11 +1,12 @@
 // Contruct User Model
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var User = sequelize.define("User", {
         // User Name (first and last)
         name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
+
         // User Email
         email: {
             type: DataTypes.STRING,
@@ -15,6 +16,7 @@ module.exports = function(sequelize, DataTypes) {
                 isEmail: true
             }
         },
+
         // User Phone Number
         number: {
             type: DataTypes.STRING, // or INT
@@ -24,17 +26,26 @@ module.exports = function(sequelize, DataTypes) {
                 // 10 digits
             }
         },
-        // User Zipcode ?
+        // Zipcode
+        zipcode: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            validate: {
+                len: [5, 5]
+            }
+        },
 
-        // Uid
-        uid: {
+        // password
+        password: {
             type: DataTypes.STRING,
             allowNull: false
         }
     });
 
     User.associate = models => {
-        models.User.hasMany(models.UserLocation, {foriegnkey: 'id'}, {});
+        models.User.hasMany(models.UserLocation);
+        models.User.hasMany(models.UserSession);
+
     }
 
     return User;

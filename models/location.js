@@ -41,7 +41,12 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER
         }
 
-    })
+    });
+
+    Location.associate = models => {
+        models.Location.hasMany(models.UserLocation);
+
+    }
 
     return Location;
 }
