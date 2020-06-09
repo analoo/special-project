@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt")
 const db = require("../models");
-const passport = require("passport")
+const passport = require('../config/passportConfig')
 
 
 
@@ -13,15 +13,12 @@ router.route("/")
 
 router
     .route("/login")
-    .post((req, res) => {
-        res.send("You just tried to login")
+    .post(passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/auth/login',
+        failureFlash: true
     })
-// .post(passport.authenticate('local', {
-//         successRedirect: '/',
-//         failureRedirect: '/auth/login',
-//         failureFlash: true
-//     })
-// );
+    );
 
 // file path /auth/logout
 
@@ -42,6 +39,7 @@ router
                 uid: hashedPassword,
             })
             res.redirect("/login")
+            console.log(req.body)
         } catch {
             res.redirect("/auth/register")
 

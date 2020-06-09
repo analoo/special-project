@@ -1,8 +1,17 @@
+// if (process.env.NODE_ENV !== 'production'){
+//     require('dotenv').config()
+// }
 // Dependencies
 const path = require("path")
 const express = require("express");
 const routes = require("./routes");
-const bcrypt = require("bcrypt")
+
+// Initializing Passport
+const passport = require("passport");
+const flash = require("express-flash");
+const session = require("express-session")
+// const initializePassport = require("../client/src/Utils/passportConfig")
+// initializePassport(passport)
 
 // Set up the express app
 const app = express();
@@ -15,6 +24,17 @@ app.use(express.static("public"));
 // Define middleware to parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(flash())
+app.use(session({
+    // to update with real key in the future and add to the .env file
+    secret: "placeholder",
+    resave: false,
+    saveUninitialized: false
+
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Require models
 const db = require("./models");
