@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt")
 const db = require("../models");
-const key = "pineapple"
-// file path /auth/
 
 router.route("/")
 
