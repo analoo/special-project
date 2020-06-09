@@ -8,6 +8,7 @@ module.exports = function(sequelize, Datatypes) {
 
     UserSession.associate = models => {
         UserSession.belongsTo(models.User);
+    }
 
     return UserSession;
 }
