@@ -6,7 +6,16 @@ export default {
     },
     
     signOut: function() {
-        console.log("You made a request to sign out")
         return axios.delete(`/auth/logout`)
+    },
+
+    login: function(user){
+        return axios.post("/auth/login", user)
+    },
+
+    register: function(user){
+        return axios.post("/auth/register", user)
     }
+    
+
 }

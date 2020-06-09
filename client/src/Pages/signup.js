@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 import { useHistory } from "react-router-dom";
+import API from "../Utils/API"
 
-import axios from "axios"
 
 function Signup() {
     const [email, setUserEmail] = useState("");
@@ -13,7 +13,7 @@ function Signup() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post("/auth/register", {
+        API.register({
             name: name,
             email: email,
             password: password,
@@ -22,8 +22,6 @@ function Signup() {
             console.log(res)})
             .catch(err => console.log(err))
     }
-
-
 
     return (
         <div>
