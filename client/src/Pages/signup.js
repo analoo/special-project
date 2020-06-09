@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
+import { useHistory } from "react-router-dom";
+
 import axios from "axios"
 
 function Signup() {
     const [email, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
+    const history = useHistory();
+
 
 
     const handleSubmit = (event) => {
@@ -13,7 +17,9 @@ function Signup() {
             name: name,
             email: email,
             password: password,
-        }).then(res => console.log(res))
+        }).then(res => {
+            history.push("/profile");
+            console.log(res)})
             .catch(err => console.log(err))
     }
 
@@ -26,7 +32,7 @@ function Signup() {
                     <label>Name</label>
                     <input
                         type="text"
-                        name="email"
+                        name="name"
                         value={name}
                         onChange={e => setName(e.target.value)}
                         required />

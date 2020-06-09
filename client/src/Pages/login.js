@@ -1,11 +1,13 @@
 import React from "react";
 
 function Login() {
+
+    
     return (
         <form action="/auth/login" method="post">
             <div>
-                <label>Username:</label>
-                <input type="text" name="username" />
+                <label>Email</label>
+                <input type="email" name="email" />
             </div>
             <div>
                 <label>Password:</label>

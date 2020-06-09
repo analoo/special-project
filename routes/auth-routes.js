@@ -1,9 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt")
 const db = require("../models");
-const passport = require('../config/passportConfig')
-
-
 
 // file path /auth/
 
@@ -13,12 +10,32 @@ router.route("/")
 
 router
     .route("/login")
-    .post(passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/auth/login',
-        failureFlash: true
+    .post((req, res) => {
+        db.User.findOne({
+            where: {
+                email: req.body.email
+            }
+        })
+            .then(async function (userData) {
+                if (!userData) {
+                    res.send({ user: false, message: "No user with that email" });
+                    return
+                }
+            
+                if (await bcrypt.compare( req.body.password, userData.uid)) {
+                    res.cookie("userId", userData.id).send({ user: userData.id, message: "Welcome Back" });
+                    console.log("Password found a match!")
+                }
+                else {
+                    res.send({ user: false, message: "Password Incorrect" });
+                    console.log("Incorrect Password")
+                }
+            })
+            .catch(err => {
+            res.send(err)
+            console.log("We caught an error")
+        });
     })
-    );
 
 // file path /auth/logout
 
@@ -37,14 +54,18 @@ router
                 name: req.body.name,
                 email: req.body.email,
                 uid: hashedPassword,
+            }).then(userData => {
+                res.send({ user: userData.id, message: "Welcome" });
+                console.log("You signed up!")
             })
-            res.redirect("/login")
-            console.log(req.body)
-        } catch {
-            res.redirect("/auth/register")
+            
+        } catch (err) {
+            res.send(err)
 
         }
     });
+
+// file path /auth/info
 
 
 
