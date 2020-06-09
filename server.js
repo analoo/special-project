@@ -1,9 +1,8 @@
-// if (process.env.NODE_ENV !== 'production'){
-//     require('dotenv').config()
-// }
+
 // Dependencies
 const path = require("path")
 const express = require("express");
+const cookieParser = require("cookie-parser")
 const routes = require("./routes");
 
 // Initializing Passport
@@ -24,6 +23,7 @@ app.use(express.static("public"));
 // Define middleware to parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser())
 app.use(flash())
 app.use(session({
     // to update with real key in the future and add to the .env file

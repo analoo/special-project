@@ -1,4 +1,4 @@
-module.exports = function(sequelize, Datatypes) {
+module.exports = function(sequelize, DataTypes) {
     var UserLocation = sequelize.define("UserLocation", {
         startDate: {
             type: DataTypes.DATE,

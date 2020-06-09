@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import SignOut from "./Buttons/signout"
 
 
 function NavBar() {
@@ -26,6 +27,7 @@ function NavBar() {
                         Login
                     </Link>
                 </ul>
+            <SignOut/>
             </div>
         </nav>
     )

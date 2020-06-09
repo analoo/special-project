@@ -1,7 +1,7 @@
-module.exports = function(sequelize, Datatypes) {
+module.exports = function(sequelize, DataTypes) {
     var UserSession = sequelize.define("UserSession", {
         session: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         }
     });

@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt")
 const db = require("../models");
-
+const key = "pineapple"
 // file path /auth/
 
 router.route("/")
@@ -17,14 +17,25 @@ router
             }
         })
             .then(async function (userData) {
+                console.log(userData)
                 if (!userData) {
                     res.send({ user: false, message: "No user with that email" });
                     return
                 }
-            
-                if (await bcrypt.compare( req.body.password, userData.uid)) {
-                    res.cookie("userId", userData.id).send({ user: userData.id, message: "Welcome Back" });
+
+                if (await bcrypt.compare(req.body.password, userData.password)) {
+                    console.log("password matched")
+                    // let session = await bcrypt.hash(key, 10)
+                    let session = `saferthan${userData.id}this`
+                    res.cookie("userSession", session).send({ user: userData.id, message: "Welcome Back" })
                     console.log("Password found a match!")
+                    db.UserSession.create({
+                        UserId: userData.id,
+                        session:  session
+                    }).then(res => {
+                        console.log("Get ready for the cookie")
+                    }
+                    )
                 }
                 else {
                     res.send({ user: false, message: "Password Incorrect" });
@@ -32,16 +43,36 @@ router
                 }
             })
             .catch(err => {
-            res.send(err)
-            console.log("We caught an error")
-        });
+                res.send(err)
+                console.log("We caught an error")
+            });
     })
 
 // file path /auth/logout
 
-router.route("/logout", (req, res) => {
-    res.send("You just signed out")
-});
+router.route("/logout")
+    .delete((req, res) => {
+        const cookieValues = req.headers.cookie.split(";");
+        res.clearCookie("userSession");
+        res.send(200)
+        let userSession = null;
+        cookieValues.forEach(element => {
+            if(element.split("=")[0].trim()=== "userSession"){
+                userSession = element.split("=")[1].trim()
+            }
+        })
+        db.UserSession.destroy({
+            where: {
+                session: userSession
+            }
+        }).then(result => {
+            console.log("Cookie has been cleared")
+
+        }).catch(err => {
+            console.log(err)
+        })
+        
+    });
 
 // file path /auth/logout
 router
@@ -53,12 +84,20 @@ router
             db.User.create({
                 name: req.body.name,
                 email: req.body.email,
-                uid: hashedPassword,
-            }).then(userData => {
-                res.send({ user: userData.id, message: "Welcome" });
-                console.log("You signed up!")
+                password: hashedPassword,
+            }).then(function (userData) {
+                let sessionID = `saferthan${userData.id}this`
+                // let session = await bcrypt.hash(key, 10)
+                res.cookie("userSession", sessionID).send({ user: userData.id, message: "Welcome!" })
+                db.UserSession.create({
+                    UserId: userData.id,
+                    session: sessionID
+                }).then(res => {
+                    console.log(res)
+                }
+                )
             })
-            
+
         } catch (err) {
             res.send(err)
 

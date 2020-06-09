@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const db = require("../models");
+const cookieParser = require("cookie-parser")
+
 
 
 
@@ -11,20 +13,21 @@ router.route("/profile")
     .get((req, res) => {
         // console.log(req.cookie)
         const cookieValues = req.headers.cookie.split(";");
-        let userId = null;
+        let userSession = null;
         cookieValues.forEach(element => {
-            if(element.split("=")[0].trim()=== "userId"){
-                userId = element.split("=")[1].trim()
+            if(element.split("=")[0].trim()=== "userSession"){
+                userSession = element.split("=")[1].trim()
             }
         })
 
-        db.User.findOne({
+        db.UserSession.findOne({
             where: {
-                id: userId
-            }
+                session: userSession
+            },
+            include: db.User
         }).then(userData => {
             console.log(userData)
-            res.send({id: userData.id, username: userData.email});
+            res.send({id: userData.UserId, username: userData.User.email});
         })
         
        
