@@ -8,7 +8,9 @@ function NavBar() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
-            {/* <!-- <a className="navbar-brand" href="/">Navbar w/ text</a> --> */}
+            <Link className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+                <img className="navbar-brand" src="/footsteps.png" style={{width: "60px"}}/>
+            </Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
