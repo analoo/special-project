@@ -1,17 +1,17 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import CheckInButton from "../Components/CheckInButton";
+import SignOut from "./Buttons/signout"
 
 
 function NavBar() {
     const location = useLocation();
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-             <a class="navbar-brand" href="/">
-                <img src="https://lh6.googleusercontent.com/dByUthx2WomxVwte5qD-8sW_K5qFNboZRA8MiAfhaKyl_0lO0m_QPn8YLodF0ahMMBZhJHZaFx-fl8dJ_Y9d-72mHPZibGyT1Ar5Gfau" width="60" height="60" class="d-inline-block align-top" alt="" loading="lazy"/>
-            </a>
-            {/* <!-- <a className="navbar-brand" href="/">Navbar w/ text</a> --> */}
+        <nav className="navbar navbar-expand-lg navbar-light">
+            <Link className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+                <img className="navbar-brand" src="/footsteps.png" style={{width: "60px"}}/>
+            </Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -26,7 +26,11 @@ function NavBar() {
                     <Link to="/profile" className={location.pathname === "/search" ? "nav-link active" : "nav-link"}>
                         Profile
                     </Link>
+                    <Link to="/login" className={location.pathname === "/login" ? "nav-link active" : "nav-link"}>
+                        Login
+                    </Link>
                 </ul>
+            <SignOut/>
             </div>
             <CheckInButton/>
         </nav>

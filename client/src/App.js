@@ -6,6 +6,10 @@ import Home from "./Pages/home";
 import NoMatch from "./Pages/noMatch";
 import Profile from "./Pages/profile";
 import Search from "./Pages/search";
+import Login from "./Pages/login";
+import Signup from "./Pages/signup";
+
+
 
 import NavBar from "./Components/navBar"
 
@@ -20,6 +24,9 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+
             <Route component={NoMatch} />
           </Switch>
         </div>
