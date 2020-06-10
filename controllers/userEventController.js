@@ -14,8 +14,9 @@ module.exports = {
         db.UserEvent
         .findAll({
             where: {
-                UserId:req.body.id
-            }
+                UserId:req.body.userid
+            },
+            include: db.User
         }).then(userEvent => {
             res.json(userEvent)
         }).catch(err => res.json(err))
