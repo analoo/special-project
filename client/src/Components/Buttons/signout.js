@@ -5,12 +5,11 @@ import { useHistory } from "react-router-dom";
 
 function SignOut(){
     const history = useHistory();
+    
     const signout = () => {
         API.signOut().then(res =>
             console.log(res))
             history.push("/");
-
-
     }
 
     return(

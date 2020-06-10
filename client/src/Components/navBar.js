@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import CheckInButton from "../Components/CheckInButton";
+import CheckInButton from "../Components/Buttons/CheckInButton";
 import SignOut from "./Buttons/signout"
 
 
