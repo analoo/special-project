@@ -12,9 +12,9 @@ module.exports = {
                     client_id: keys.foursquare.clientID,
                     client_secret: keys.foursquare.clientSecret,
                     ll: "40.74224,-73.99386",
-                    query: 'tacombi',
+                    query: 'tacos',
                     v: '20180323',
-                    limit: 2,
+                    limit: 10,
                 },
             },
             function (err, resp, body) {
@@ -24,7 +24,7 @@ module.exports = {
                     console.log(body);
                 }
                 let val = JSON.parse(body);
-                res.json({
+                res.send({
                     totalResults: val.response.totalResults,
                     code: val.meta.code,
                     groups: val.response.groups

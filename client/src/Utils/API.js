@@ -21,6 +21,10 @@ export default {
         return axios.post("/api/userEvent", event)
     },
 
+    findLocation: function(){
+        return axios.get("/api/event")
+    },
+
     // needs to send the userID in 
     findUserEvents: function(userid){
         return axios.post("/api/userEvent", userid)
