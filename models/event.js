@@ -1,29 +1,34 @@
 module.exports = function(sequelize, DataTypes) {
-    var Location = sequelize.define("Location", {
+    var Event = sequelize.define("Event", {
         // Type - eatery or outdoor recreation
         type: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         // Name
         name: {
             type: DataTypes.STRING,
             allowNull: false
         },
+        // Location
+        location: {
+            type: DataTypes.STRING,
+            allow: false
+        },
         // Street Address
         address: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         // City
         city: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         // State
         state: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [2,2]
             }
@@ -36,17 +41,12 @@ module.exports = function(sequelize, DataTypes) {
                 len: [5,5]
             }
         },
-        // Capacity
-        capacity: {
-            type: DataTypes.INTEGER
-        }
-
     });
 
-    Location.associate = models => {
-        models.Location.hasMany(models.UserLocation);
+    Event.associate = models => {
+        models.Event.hasMany(models.UserEvent);
 
     }
 
-    return Location;
+    return Event;
 }

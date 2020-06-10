@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
         // User Name (first and last)
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
 
         // User Email
@@ -43,7 +43,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     User.associate = models => {
-        models.User.hasMany(models.UserLocation);
+        models.User.hasMany(models.UserEvent);
         models.User.hasMany(models.UserSession);
 
     }

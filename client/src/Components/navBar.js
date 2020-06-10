@@ -20,8 +20,8 @@ function NavBar() {
                     <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
                         Home
                     </Link>
-                    <Link to="/search" className={location.pathname === "/search" ? "nav-link active" : "nav-link"}>
-                        Search
+                    <Link to="/activities" className={location.pathname === "/search" ? "nav-link active" : "nav-link"}>
+                        Activities
                     </Link>
                     <Link to="/profile" className={location.pathname === "/search" ? "nav-link active" : "nav-link"}>
                         Profile

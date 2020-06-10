@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Pages/home";
 import NoMatch from "./Pages/noMatch";
 import Profile from "./Pages/profile";
-import Search from "./Pages/search";
+import Activities from "./Pages/activities";
 import Login from "./Pages/login";
 import Signup from "./Pages/signup";
 
@@ -22,7 +22,7 @@ function App() {
           <NavBar />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/search" component={Search} />
+            <Route exact path="/activities" component={Activities} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
