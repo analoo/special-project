@@ -2,19 +2,19 @@ import axios from "axios";
 
 export default {
     getUser: function () {
-        return axios.get(`/api/profile`)
+        return axios.get(`/api/user`)
     },
     
     signOut: function() {
-        return axios.delete(`/auth/logout`)
+        return axios.delete(`/auth`)
     },
 
     login: function(user){
-        return axios.post("/auth/login", user)
+        return axios.post("/auth", user)
     },
 
     register: function(user){
-        return axios.post("/auth/register", user)
+        return axios.post("/api/user", user)
     },
 
     createEvent: function(event){

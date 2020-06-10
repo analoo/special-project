@@ -4,7 +4,7 @@ import AddForm from "../AddForm";
 function CheckInButton() {
     return (
         <div>
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">
+            <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">
                 Check In
             </button>
 

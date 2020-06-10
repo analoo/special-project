@@ -14,7 +14,7 @@ function SignOut(){
     }
 
     return(
-        <button onClick={signout}>
+        <button className="btn" onClick={signout}>
             SignOut
         </button>
     )
