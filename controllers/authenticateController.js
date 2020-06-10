@@ -21,7 +21,7 @@ module.exports = {
                     console.log("password matched")
                     // let session = await bcrypt.hash(key, 10)
                     let session = `saferthan${userData.id}this`
-                    res.cookie("userSession", session).send({ user: userData.id, message: "Welcome Back" })
+                    res.cookie("userSession", session).send({user: userData.id, message: "Welcome Back" })
                     console.log("Password found a match!")
                     db.UserSession.create({
                         UserId: userData.id,
