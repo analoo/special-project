@@ -8,8 +8,6 @@ function Login() {
     const [password, setPassword] = useState("");
     const history = useHistory();
 
-
-
     const handleSubmit = (event) => {
         event.preventDefault();
         API.login({

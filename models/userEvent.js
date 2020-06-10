@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var UserLocation = sequelize.define("UserLocation", {
+    var UserEvent = sequelize.define("UserEvent", {
         startDate: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -19,6 +19,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.TIME,
             allowNull: false,
         },
+        contacts: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
 
         mask: {
             type: DataTypes.BOOLEAN,
@@ -29,17 +33,23 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             allowNull: true,
         },
+
+        outside: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+        },
+        
         notes: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
         }
 
     });
 
-    UserLocation.associate = models => {
-        UserLocation.belongsTo(models.User);
-        UserLocation.belongsTo(models.Location);
+    UserEvent.associate = models => {
+        UserEvent.belongsTo(models.User);
+        UserEvent.belongsTo(models.Event);
     };
 
-    return UserLocation;
+    return UserEvent;
 }
