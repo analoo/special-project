@@ -12,9 +12,9 @@ module.exports = {
                     client_id: keys.foursquare.clientID,
                     client_secret: keys.foursquare.clientSecret,
                     ll: "40.74224,-73.99386",
-                    query: 'tacos',
+                    query: 'starbucks',
                     v: '20180323',
-                    limit: 10,
+                    limit: 1000,
                 },
             },
             function (err, resp, body) {

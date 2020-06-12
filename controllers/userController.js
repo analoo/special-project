@@ -1,5 +1,7 @@
 const db = require("../models")
 const bcrypt = require("bcrypt")
+const keys = require("../private/keys")
+
 
 
 module.exports = {
@@ -23,30 +25,6 @@ module.exports = {
         })
     },
 
-    register: async function (req, res){
-        try {
-            const hashedPassword = await bcrypt.hash(req.body.password, 10)
-            console.log(`created hashed password: ${hashedPassword}`)
-            db.User.create({
-                name: req.body.name,
-                email: req.body.email,
-                password: hashedPassword,
-            }).then((userData) => {
-                let sessionID = `saferthan${userData.id}this`
-                res.cookie("userSession", sessionID).send({ user: userData.id, message: "Welcome!" })
-                db.UserSession.create({
-                    UserId: userData.id,
-                    session: sessionID
-                }).then(res => {
-                    console.log(res)
-                }
-                )
-            })
-
-        } catch (err) {
-            res.send(err)
-
-        }
-    }
+    
 
 }
