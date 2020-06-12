@@ -1,5 +1,6 @@
 const db = require("../models")
 const bcrypt = require("bcrypt")
+const keys = require("../private/keys")
 
 
 module.exports = {
@@ -19,8 +20,7 @@ module.exports = {
 
                 if (await bcrypt.compare(req.body.password, userData.password)) {
                     console.log("password matched")
-                    // let session = await bcrypt.hash(key, 10)
-                    let session = `saferthan${userData.id}this`
+                    let session = await bcrypt.hash(keys.cookie.keyWord, 10)
                     res.cookie("userSession", session).send({user: userData.id, message: "Welcome Back" })
                     console.log("Password found a match!")
                     db.UserSession.create({
@@ -52,6 +52,10 @@ module.exports = {
                 userSession = element.split("=")[1].trim()
             }
         })
+
+        console.log(userSession);
+        console.log(decodeURIComponent(userSession))
+
         db.UserSession.destroy({
             where: {
                 session: userSession
