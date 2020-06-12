@@ -21,15 +21,14 @@ module.exports = {
                 if (await bcrypt.compare(req.body.password, userData.password)) {
                     console.log("password matched")
                     let session = await bcrypt.hash(keys.cookie.keyWord, 10)
-                    res.cookie("userSession", session).send({user: userData.id, message: "Welcome Back" })
+                    res.cookie("footsteps_userSession", session).send({user: userData.id, message: "Welcome Back" })
                     console.log("Password found a match!")
                     db.UserSession.create({
                         UserId: userData.id,
                         session:  session
                     }).then(res => {
                         console.log("Get ready for the cookie")
-                    }
-                    )
+                    })
                 }
                 else {
                     res.send({ user: false, message: "Password Incorrect" });
@@ -44,7 +43,7 @@ module.exports = {
 
     logout: (req, res) => {
         const cookieValues = req.headers.cookie.split(";");
-        res.clearCookie("userSession");
+        res.clearCookie("footsteps_userSession");
         res.send(200)
         let userSession = null;
         cookieValues.forEach(element => {

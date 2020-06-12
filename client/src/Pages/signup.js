@@ -21,7 +21,9 @@ function Signup() {
             password: password,
         }).then(res => {
             setError(res.data.message)
-            history.push("/profile");
+            if(res.data.code === 200){
+                history.push("/profile");
+            }
             console.log(res)
         })
             .catch(err => console.log(err))
