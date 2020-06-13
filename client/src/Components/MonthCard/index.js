@@ -4,7 +4,7 @@ import EventCard from "../EventCard";
 function MonthCard(card) {
     return (
         <div className="card">
-            <div className="card-header" id="headingOne">
+            <div className="card-header bg-gray" id="headingOne">
                 <h2 className="mb-0">
                     <button className="btn btn-block text-left font-weight-bold collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                         {/* {card.month} */}
