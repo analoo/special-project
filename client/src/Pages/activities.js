@@ -5,8 +5,6 @@ function Activities(){
     return(
         <div>
             <h1 className="mt-3">Activities</h1>
-            <hr/>
-
             <MonthContainer/>
         </div>
     )
