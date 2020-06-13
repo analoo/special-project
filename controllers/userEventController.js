@@ -1,50 +1,32 @@
 const db = require("../models")
 
 module.exports = {
-    create: (req, res) => {
-        db.UserEvent
-            .create(req.body, {})
-            .then(userEvent => { 
-                res.json(userEvent)
-            })
-            .catch(err => res.status(422).json(err));
-    },
 
-    findByUser: (req,res) => {
-        db.UserEvent
-        .findAll({
-            where: {
-                UserId:req.body.userid
-            },
-            include: db.User
-        }).then(userEvent => {
-            res.json(userEvent)
-        }).catch(err => res.json(err))
-    },
-
-    // 6/9, AMF - Should we confirm that the requester is the owner?
-
-    update: (req,res) => {
-        db.UserEvent
-        .update(req.body,{
-            where: {
-                id:req.params.eventId
+    findByUser: (req, res) => {
+        const cookieValues = req.headers.cookie.split(";");
+        let userSession = null;
+        cookieValues.forEach(element => {
+            if (element.split("=")[0].trim() === "footsteps_userSession") {
+                userSession = decodeURIComponent(element.split("=")[1].trim())
             }
-        }).then(userEvent => {
-            res.json(userEvent)
-        }).catch(err => res.json(err))
-    },
-
-    delete: (req,res) => {
-        db.UserEvent
-        .destroy({
+        })
+        db.UserSession.findOne({
             where: {
-                id:req.params.eventId
+                session: userSession
             }
-        }).then(userEvent => {
-            res.json(userEvent)
-        }).catch(err => res.json(err))
-    },
+        }).then(res1 => {
+            db.UserEvent
+                .findAll({
+                    where: {
+                        UserId: res1.userID
+                    },
+                }).then(userEvent => {
+                    res.send(userEvent)
+                }).catch(err => res.json(err))
+        }).catch(err => {
+            res.json(err)
+        })
+    }
 
 
 }

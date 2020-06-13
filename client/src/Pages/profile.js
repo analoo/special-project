@@ -10,7 +10,7 @@ function Profile(){
         .then(res => {
             console.log(res.data)
             setId(res.data.id)
-            setUsername(res.data.username)
+            setUsername(res.data.email)
         })
     }, [])
 

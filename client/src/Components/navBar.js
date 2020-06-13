@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import CheckInButton from "../Components/Buttons/CheckInButton";
 import SignOut from "./Buttons/signout"
+import AddEvent from "./Buttons/addEvent"
+
 
 
 function NavBar() {
@@ -31,6 +33,7 @@ function NavBar() {
                     </Link>
                 </ul>
             <SignOut/>
+            <AddEvent/>
             </div>
             <CheckInButton/>
         </nav>
