@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
     var UserEvent = sequelize.define("UserEvent", {
+        color: {
+            type: DataTypes.STRING,
+            defaultValue: "grey"
+        },
+        
         startDate: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -29,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true,
         },
 
-        withinSixFt: {
+        sixFeet: {
             type: DataTypes.BOOLEAN,
             allowNull: true,
         },

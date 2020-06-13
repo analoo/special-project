@@ -9,12 +9,4 @@ router
     .post(eventController.create)
     .get(externalAPIs.find)
 
-//Matches with "/api/event/eventId"
-router
-    .route("/eventId")
-    .delete(eventController.delete)
-
-
-
-
 module.exports = router;

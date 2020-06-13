@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import CalendarForm from "../CalendarForm";
-import "./style.css";
+// import "./style.css";
 
 function AddForm() {
     const [color, setColor] = useState("");

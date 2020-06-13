@@ -5,24 +5,32 @@ const keys = require("../private/keys")
 
 
 module.exports = {
-    findOne: (req, res) => {
+    findOne: (req,res) => {
         const cookieValues = req.headers.cookie.split(";");
         let userSession = null;
         cookieValues.forEach(element => {
-            if (element.split("=")[0].trim() === "userSession") {
-                userSession = element.split("=")[1].trim()
+            if (element.split("=")[0].trim() === "footsteps_userSession") {
+                userSession = decodeURIComponent(element.split("=")[1].trim())
             }
         })
-
         db.UserSession.findOne({
             where: {
                 session: userSession
-            },
-            include: db.User
-        }).then(userData => {
-            console.log(userData)
-            res.send({ id: userData.UserId, username: userData.User.email });
+            }
+        }).then(result => {
+            console.log(result.id)
+            db.User.findOne({
+                where: {
+                    id: result.id
+                }
+            }).then(result => {
+                    res.send(result)
+                })
+            })
+        .catch(err => {
+            res.send(err)
         })
+
     },
 
     register:  async function (req,res) {
@@ -35,7 +43,7 @@ module.exports = {
                 name: req.body.name,
                 email: req.body.email,
                 password: hashedPassWord
-            }).then( async function(userData){
+            }).then(async function(userData){
                 let session = await bcrypt.hash(keys.cookie.keyWord,10)
                 res.cookie("footsteps_userSession", session).send({message: "Welcome"})
                 db.UserSession.create({
