@@ -12,7 +12,7 @@ function NavBar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
             
-            <Link className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+            <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
                 <img className="navbar-brand" src="/footsteps.png" alt="footsteps logo" style={{width: "60px"}}/>
             </Link>
             
