@@ -36,7 +36,7 @@ function SearchBar() {
                         onChange={e => setSearch(e.target.value)}
                     />
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
             </form>
 
             <div>
