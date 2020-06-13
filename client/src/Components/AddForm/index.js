@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import "./style.css";
 
 // function eventJSON(color, eventName, location, notes, mask, sixFt, outside, contact, startTime, endTime, startDate, endDate, allDay) {
 //     return (
