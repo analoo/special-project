@@ -19,9 +19,6 @@ module.exports = {
             db.Event
                 .create(req.body, {})
                 .then(event => {
-                    console.log(res1.UserId)
-                    console.log(event.id)
-                    console.log("About to make the userEvent request")
                     db.UserEvent.create({
                         color: req.body.color,
                         startDate: req.body.startDate,

@@ -27,7 +27,9 @@ export default {
     },
 
     // not validated
-    // userMonths
+    userMonths: function(userid){
+        return axios.get("/api/userEvent")
+    },
 
     // eventsByMonth
 
@@ -46,9 +48,9 @@ export default {
    
 
     // needs to send the userID in 
-    findUserEvents: function(userid){
-        return axios.post("/api/userEvent", userid)
-    },
+    // findUserEvents: function(userid){
+    //     return axios.post("/api/userEvent", userid)
+    // },
 
    
 
