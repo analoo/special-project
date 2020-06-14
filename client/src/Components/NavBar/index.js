@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import CheckInButton from "../Components/Buttons/CheckInButton";
-import SignOut from "./Buttons/signout"
-import AddEvent from "./Buttons/addEvent"
+import CheckInButton from "../Buttons/CheckInButton";
+import SignOut from "../Buttons/signout"
+import AddEvent from "../Buttons/addEvent"
 
 
 
@@ -11,12 +11,15 @@ function NavBar() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
-            <Link className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
-                <img className="navbar-brand" src="/footsteps.png" style={{width: "60px"}}/>
+            
+            <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+                <img className="navbar-brand" src="/footsteps.png" alt="footsteps logo" style={{width: "60px"}}/>
             </Link>
+            
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
+
             <div className="collapse navbar-collapse" id="navbarText">
                 <ul className="navbar-nav mr-auto">
                     <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
@@ -32,8 +35,8 @@ function NavBar() {
                         Login
                     </Link>
                 </ul>
-            <SignOut/>
-            <AddEvent/>
+                <SignOut/>
+                <AddEvent/>
             </div>
             <CheckInButton/>
         </nav>

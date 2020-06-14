@@ -11,7 +11,7 @@ import Signup from "./Pages/signup";
 
 
 
-import NavBar from "./Components/navBar"
+import NavBar from "./Components/NavBar"
 
 
 function App() {
