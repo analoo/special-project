@@ -18,7 +18,7 @@ function MonthContainer() {
     return (
         <div className="accordion mx-auto my-5" id="accordionExample" style={{maxWidth: "70rem"}}>
             {months.map(month => (
-                 <MonthCard data={month}/>
+                 <MonthCard data={month} key={month.month}/>
             ))}
             
         </div>

@@ -17,14 +17,13 @@ module.exports = {
             where: {
                 session: userSession
             }
-        }).then(result => {
-            console.log(result.id)
+        }).then(res1 => {
             db.User.findOne({
                 where: {
-                    id: result.id
+                    id: res1.UserId
                 }
             }).then(result => {
-                    res.send(result)
+                res.send(result)
                 })
             })
         .catch(err => {

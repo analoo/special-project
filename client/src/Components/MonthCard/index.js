@@ -26,8 +26,8 @@ function MonthCard(props) {
             </div>
 
             <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                {activities.map(activity => (
-                    <EventCard data={activity}/>
+                {activities.map( (activity,i) => (
+                    <EventCard data={activity} key={`${i}-${activity.Event.name}`}/>
                 ))}
             </div>
 
