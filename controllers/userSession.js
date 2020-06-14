@@ -15,6 +15,7 @@ module.exports = {
         })
     },
 
+
     delete: (req, res) => {
         const cookieValues = req.headers.cookie.split(";");
         res.clearCookie("footsteps_userSession");

@@ -56,6 +56,34 @@ module.exports = {
         } catch(err){
             res.send(err)
         }
-    } 
+    },
+
+    update: (req,res) => {
+        const cookieValues = req.headers.cookie.split(";");
+        let userSession = null;
+        cookieValues.forEach(element => {
+            if (element.split("=")[0].trim() === "footsteps_userSession") {
+                userSession = decodeURIComponent(element.split("=")[1].trim())
+            }
+        })
+        db.UserSession.findOne({
+            where: {
+                session: userSession
+            }
+        }).then(res1 => {
+            db.User.update(req.body,
+                {
+                where: {
+                    id: res1.UserId
+                }
+            }).then(result => {
+                res.send(result)
+                })
+            })
+        .catch(err => {
+            res.send(err)
+        })
+
+    },
 
 }
