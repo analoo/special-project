@@ -16,22 +16,17 @@ function Profile(){
         })
     }, [])
 
-
-
-
-
-
     return(
         <div>
             {/* This is the Profile Page
             Id: {id}
             Username: {username} */}
 
-            <div class="card main-div" style={{width: "18rem"}}>
-                <div class="card-body">
-                    <h5 class="card-title">Name: {name}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">User Id: {id}</h6>
-                    <a href={`mailto:${username}`} class="card-link">Email</a>
+            <div className="card main-div" style={{width: "18rem"}}>
+                <div className="card-body">
+                    <h5 className="card-title">Name: {name}</h5>
+                    <h6 className="card-subtitle mb-2 purple">User Id: {id}</h6>
+                    <a href={`mailto:${username}`} className="card-link dark-purple">Email</a>
                 </div>
             </div>
         </div>
