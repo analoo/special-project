@@ -35,10 +35,10 @@ function NavBar() {
                         Login
                     </Link>
                 </ul>
-                <SignOut/>
                 <AddEvent/>
+                <CheckInButton/>
             </div>
-            <CheckInButton/>
+            <SignOut/>
         </nav>
     )
 }
