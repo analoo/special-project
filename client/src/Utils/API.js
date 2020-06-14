@@ -27,9 +27,13 @@ export default {
     },
 
     // not validated
-    // userMonths
+    userMonths: function(){
+        return axios.get("/api/userEvent")
+    },
 
-    // eventsByMonth
+    activitiesByMonth: function(dates){
+        return axios.put("/api/userEvent", dates)
+    }
 
 
     // updateEvent: function(event, eventId){
@@ -46,9 +50,9 @@ export default {
    
 
     // needs to send the userID in 
-    findUserEvents: function(userid){
-        return axios.post("/api/userEvent", userid)
-    },
+    // findUserEvents: function(userid){
+    //     return axios.post("/api/userEvent", userid)
+    // },
 
    
 
