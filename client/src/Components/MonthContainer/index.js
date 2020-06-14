@@ -7,9 +7,7 @@ function MonthContainer() {
     const [months, setMonths] = useState([])
 
     useEffect(() => {
-        API.userMonths({
-            UserId: 2
-        }).then(res => {
+        API.userMonths().then(res => {
             setMonths(res.data)
         }).catch(err => 
             console.log(err))

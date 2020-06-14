@@ -7,12 +7,13 @@ router
     // .post(userEventController.create)
     // .get(userEventController.findByUser)
     .get(userEventController.findMonths)
+    .put(userEventController.findByMonth)
 
 
 // Matches with /api/userEvent/month
-router
-    .route("/month")
-    .get(userEventController.findByMonth)
+// router
+    // .route("/month")
+    // .get(userEventController.findByMonth)
 
 //     .put(userEventController.update)
 //     .delete(userEventController.delete)

@@ -27,11 +27,13 @@ export default {
     },
 
     // not validated
-    userMonths: function(userid){
+    userMonths: function(){
         return axios.get("/api/userEvent")
     },
 
-    // eventsByMonth
+    activitiesByMonth: function(dates){
+        return axios.put("/api/userEvent", dates)
+    }
 
 
     // updateEvent: function(event, eventId){

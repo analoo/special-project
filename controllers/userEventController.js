@@ -1,5 +1,7 @@
 const db = require("../models")
 var moment = require('moment');
+const { Op } = require('sequelize')
+
 
 module.exports = {
 
@@ -74,8 +76,8 @@ module.exports = {
                         for (let i = 0; i <= diff; i++) {
                             months.push({
                                 month: moment().subtract(i, "months").format("MMMM YYYY"),
-                                start: moment().subtract(i, "months").startOf("month").format("YYYY-MM-DD"),
-                                end: moment().subtract(i, "months").format("YYYY-MM-DD")
+                                start: moment().subtract(i, "months").startOf("month"),
+                                end: moment().subtract(i, "months").endOf("month")
                             })
                         }
                         res.send(months)
@@ -83,22 +85,30 @@ module.exports = {
                     }
 
                 }).catch(err => res.json(err))
-    })
-},
+        })
+    },
 
     findByMonth: (req, res) => {
+        console.log(req.body)
+        let start = new Date(req.body.start)
+        let end = new Date(req.body.end)
+
         db.UserEvent
             .findAll({
                 where: {
-                    UserId: req.body.UserId
+                    UserId: req.body.UserId,
+                    startDate: {
+                        [Op.between]: [start, end]
+                    }
                 },
-                from: {
-                    $between: [req.body.start, req.body.end]
-                },
+                include: [db.Event],
+                order: [['startDate', 'DESC'],
+                ['startTime', 'DESC']
+            ],
+
             }).then(userEvent => {
-                console.log(userEvent)
                 res.send(userEvent)
-            })
+            }).catch(err => res.send(err))
     }
 
 
