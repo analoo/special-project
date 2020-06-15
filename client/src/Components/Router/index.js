@@ -9,7 +9,8 @@ import Activities from "../../Pages/activities";
 import Login from "../../Pages/login";
 import Signup from "../../Pages/signup";
 
-import NavBar from "../NavBar"
+import NavBar from "../NavBar";
+import Footer from "../Footer";
 
 function Router() {
 
@@ -26,6 +27,7 @@ function Router() {
 
                     <Route component={NoMatch} />
                 </Switch>
+                <Footer/>
             </div>
       </BrowserRouter>
     )
