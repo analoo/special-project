@@ -8,7 +8,6 @@ import { useUserContext } from "../../Utils/userContext"
 
 function NavBar() {
     const location = useLocation();
-    const [userBool, setUserBool] = useState(false)
     const { id } = useUserContext();
 
 

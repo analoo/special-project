@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 
 
 function AddEvent() {
-    const history = useHistory();
 
     const AddEvent = () => {
         API.createEvent({
