@@ -31,7 +31,7 @@ function NavBar() {
                             <Link to="/profile" className={location.pathname === "/profile" ? "nav-link active" : "nav-link"}>
                                 Profile</Link>
                         </ul>
-                        <AddEvent/>
+                        {/* <AddEvent/> */}
                         <CheckInButton />
                         <SignOut />
                     </div>
