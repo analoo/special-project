@@ -89,26 +89,37 @@ module.exports = {
     },
 
     findByMonth: (req, res) => {
-        console.log(req.body)
         let start = new Date(req.body.start)
         let end = new Date(req.body.end)
+        const cookieValues = req.headers.cookie.split(";");
+        let userSession = null;
+        cookieValues.forEach(element => {
+            if (element.split("=")[0].trim() === "footsteps_userSession") {
+                userSession = decodeURIComponent(element.split("=")[1].trim())
+            }
+        })
+        db.UserSession.findOne({
+            where: {
+                session: userSession
+            }
+        }).then(res1 => {
+            db.UserEvent
+                .findAll({
+                    where: {
+                        UserId: res1.UserId,
+                        startDate: {
+                            [Op.between]: [start, end]
+                        }
+                    },
+                    include: [db.Event],
+                    order: [['startDate', 'DESC'],
+                    ['startTime', 'DESC']
+                    ],
 
-        db.UserEvent
-            .findAll({
-                where: {
-                    UserId: req.body.UserId,
-                    startDate: {
-                        [Op.between]: [start, end]
-                    }
-                },
-                include: [db.Event],
-                order: [['startDate', 'DESC'],
-                ['startTime', 'DESC']
-            ],
-
-            }).then(userEvent => {
-                res.send(userEvent)
-            }).catch(err => res.send(err))
+                }).then(userEvent => {
+                    res.send(userEvent)
+                }).catch(err => res.send(err))
+        })
     }
 
 

@@ -4,11 +4,9 @@ import API from "../../Utils/API"
 
 function MonthCard(props) {
     const [activities, setActivities] = useState([]);
-    console.log(activities)
 
     useEffect(() => {
         API.activitiesByMonth({
-            UserId: 1,
             start: props.data.start,
             end: props.data.end
         }).then(res => {
@@ -28,8 +26,8 @@ function MonthCard(props) {
             </div>
 
             <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                {activities.map(activity => (
-                    <EventCard data={activity}/>
+                {activities.map( (activity,i) => (
+                    <EventCard data={activity} key={`${i}-${activity.Event.name}`}/>
                 ))}
             </div>
 
