@@ -12,21 +12,22 @@ let colors = {
     green: "#00ce00",
     blue: "#006dff"
 }
-function eventJSON(color, activityName, location, notes, mask, sixFt, outside, contact, startTime, endTime, startDate, endDate) {
+
+function eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, startTime, endTime, startDate, endDate) {
     return (
         {
-            "color": color,
-            "name": activityName,
-            "location": location,
-            "notes": notes,
-            "mask": mask,
-            "sixFt": sixFt,
-            "outside": outside,
-            "contacts": contact,
-            "startTime": startTime,
-            "endTime": endTime,
-            "startDate": startDate,
-            "endDate": endDate
+            color: color,
+            name: activityName,
+            location: location,
+            notes: notes,
+            mask: mask,
+            sixFeet: sixFeet,
+            outside: outside,
+            contacts: contact,
+            startTime: startTime,
+            endTime: endTime,
+            startDate: startDate,
+            endDate: endDate
         }
     )
 }
@@ -38,10 +39,9 @@ function AddForm() {
     const [location, setLocation] = useState("");
     const [notes, setNotes] = useState("");
     const [mask, setMask] = useState(0);
-    const [sixFt, setSixFt] = useState(0);
+    const [sixFeet, setSixFeet] = useState(0);
     const [outside, setOutside] = useState(0);
     const [contact, setContact] = useState("");
-    // const [solo, setSolo] = useState(""); // or setContact(null)
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
     const [allDay, setAllDay] = useState("");
@@ -101,7 +101,7 @@ function AddForm() {
         console.log(startDate)
         console.log(endDate)
 
-        const eventBody = eventJSON(color, activityName, location, notes, mask, sixFt, outside, contact, startTime, endTime, startDate, endDate)
+        const eventBody = eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, startTime, endTime, startDate, endDate)
         console.log(eventBody)
 
         API.createEvent(eventBody)
@@ -194,8 +194,8 @@ function AddForm() {
                                         <label className="form-check-label" htmlFor="mask">Wore Mask <span role="img" aria-label="face with medical mask">😷</span></label>
                                     </div>
                                     <div className="form-check form-check-inline">
-                                        <input className="form-check-input" type="checkbox" id="sixFt" value={sixFt} onChange={() => setSixFt(1)}/>
-                                        <label className="form-check-label" htmlFor="sixFt">6ft Apart<span role="img" aria-label="footprints">👣</span></label>
+                                        <input className="form-check-input" type="checkbox" id="sixFeet" value={sixFeet} onChange={() => setSixFeet(1)}/>
+                                        <label className="form-check-label" htmlFor="sixFeet">6ft Apart<span role="img" aria-label="footprints">👣</span></label>
                                     </div>
                                     <div className="form-check form-check-inline">
                                         <input className="form-check-input" type="checkbox" id="outside" value={outside} onChange={() => setOutside(1)}/>
