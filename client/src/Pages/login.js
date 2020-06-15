@@ -28,7 +28,7 @@ function Login() {
     return (
         <MainDiv>
         <div className="col-md-6 col-sm-10" style={{border: "solid grey 1px"}}>
-            <h5 class="card-title">Sign In</h5>
+            <h5 className="card-title">Sign In</h5>
             <form onSubmit={handleSubmit}>
                 {error === "" ?
                 <div className="alert" style={{display: "inline-block"}}></div> : 
