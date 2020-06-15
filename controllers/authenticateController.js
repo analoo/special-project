@@ -21,7 +21,7 @@ module.exports = {
                 if (await bcrypt.compare(req.body.password, userData.password)) {
                     console.log("password matched")
                     let session = await bcrypt.hash(keys.cookie.keyWord, 10)
-                    res.cookie("footsteps_userSession", session).send({code: 200, user: userData.id, message: "Welcome Back", color: "green"})
+                    res.cookie("footsteps_userSession", session).send({code: 200, user: userData.id, color: "green"})
                     console.log("Password found a match!")
                     db.UserSession.create({
                         UserId: userData.id,

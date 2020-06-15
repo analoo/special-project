@@ -4,44 +4,63 @@ import CheckInButton from "../Buttons/CheckInButton";
 import SignOut from "../Buttons/signout"
 import AddEvent from "../Buttons/addEvent"
 import API from "../../Utils/API"
-
+import { useUserContext } from "../../Utils/userContext"
 
 
 function NavBar() {
     const location = useLocation();
     const [userBool, setUserBool] = useState(false)
+    const { id } = useUserContext();
+
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light" style={{borderBottom: "solid 5px #BFBFBF"}}>
-
-            <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
-                <img className="navbar-brand" src="/footsteps2.png" alt="footsteps logo" style={{ width: "60px" }} />
-            </Link>
-
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div className="collapse navbar-collapse" id="navbarText">
-                <ul className="navbar-nav mr-auto">
+        <div>
+            {id ?
+                <nav className="navbar navbar-expand-lg navbar-light" style={{ borderBottom: "solid 5px #BFBFBF" }}>
                     <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
-                        Home
+                        <img className="navbar-brand" src="/footsteps2.png" alt="footsteps logo" style={{ width: "60px" }} />
                     </Link>
-                    <Link to="/activities" className={location.pathname === "/search" ? "nav-link active" : "nav-link"}>
-                        Activities
-                    </Link>
-                    <Link to="/profile" className={location.pathname === "/search" ? "nav-link active" : "nav-link"}>
-                        Profile
-                    </Link>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarText">
+                        <ul className="navbar-nav mr-auto">
+                            <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+                                Home</Link>
+                            <Link to="/activities" className={location.pathname === "/activities" ? "nav-link active" : "nav-link"}>
+                                Activities</Link>
+                            <Link to="/profile" className={location.pathname === "/profile" ? "nav-link active" : "nav-link"}>
+                                Profile</Link>
+                        </ul>
+                        <CheckInButton />
+                        <SignOut />
+                    </div>
+                </nav>
+                :
+                <nav className="navbar navbar-expand-lg navbar-light" style={{ borderBottom: "solid 5px #BFBFBF" }}>
+                <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+                    <img className="navbar-brand" src="/footsteps2.png" alt="footsteps logo" style={{ width: "60px" }} />
+                </Link>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarText">
+                    <ul className="navbar-nav mr-auto">
+                        <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+                            Home</Link>
+                    </ul>
                     <Link to="/login" className={location.pathname === "/login" ? "nav-link active" : "nav-link"}>
-                        Login
+                        <button className="btn bg-yellow">
+                            Sign In</button>
                     </Link>
-                </ul>
-                <AddEvent/>
-                <CheckInButton/>
-            </div>
-            <SignOut/>
-        </nav>
+                </div>
+                </nav>
+
+        }
+
+
+        </div>
+
     )
 }
 

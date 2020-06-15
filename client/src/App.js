@@ -1,8 +1,6 @@
 import React from 'react';
 import Router from "./Components/Router";
-import UserProvider from "../src/Utils/userProvider"
-
-
+import {UserProvider} from "../src/Utils/userContext"
 
 function App() {
 
@@ -11,7 +9,6 @@ function App() {
       <UserProvider>
         <Router />
       </UserProvider>
-
     </div>
   );
 }

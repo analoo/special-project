@@ -9,13 +9,12 @@ function SignOut(){
     const signout = () => {
         API.signOut().then(res =>
             console.log(res))
-            history.push("/");
     }
 
     return(
-        <button className="btn bg-yellow" onClick={signout}>
+        <a href="/" type="button" className="btn bg-yellow" onClick={signout}>
             SignOut
-        </button>
+        </a>
     )
 
 }
