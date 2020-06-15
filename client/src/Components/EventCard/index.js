@@ -28,17 +28,17 @@ function EventCard(props) {
                             <div className="mb-2 float-left">
                                 {props.data.mask ? <span className="mr-2" role="img" aria-label="face with medical mask">😷</span> : null}
                                 {props.data.sixFeet ? <span className="mr-2" role="img" aria-label="footprints">👣</span> : null}
-                                {props.data.outside ?<span role="img" aria-label="national-park">🏞</span> : null}
+                                {props.data.outside ? <span role="img" aria-label="national-park">🏞</span> : null}
                             </div>
                         </div>
                         <div className="col-md-3">
                             <div className="p-3 mb-2 bg-light rounded-lg text-left">
-                                <p className="card-text">Contacts:</p>
-                                <ul>
+                                <p className="card-text">Contacts: {contacts}</p>
+                                {/* <ul>
                                 {contacts.map(person => (
                                     <li>{person}</li>
                                 ))}
-                                </ul>
+                                </ul> */}
                             </div>
                         </div>
 

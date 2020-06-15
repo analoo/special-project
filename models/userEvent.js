@@ -47,6 +47,19 @@ module.exports = function(sequelize, DataTypes) {
         notes: {
             type: DataTypes.STRING,
             allowNull: true,
+        },
+        startMonth: {
+            type: DataTypes.INTEGER
+
+        },
+        startDay: {
+            type: DataTypes.INTEGER
+
+        },
+        startYear: {
+            type: DataTypes.INTEGER
+
+
         }
 
     });

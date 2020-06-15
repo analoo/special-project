@@ -4,7 +4,7 @@ function Footer() {
   return (
 
 
-    <footer className="footer bg-light-purple my-auto py-2 fixed-bottom">
+    <footer className="footer bg-light-purple my-auto py-2 fixed-bottom" style={{clear: "both"}}>
         <div className="container">
             <div className="d-md-flex flex-row">
                 <div className="col text-center">

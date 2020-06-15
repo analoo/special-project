@@ -44,7 +44,7 @@ module.exports = {
                 password: hashedPassWord
             }).then(async function(userData){
                 let session = await bcrypt.hash(keys.cookie.keyWord,10)
-                res.cookie("footsteps_userSession", session).send({message: "Welcome"})
+                res.cookie("footsteps_userSession", session).send({message: "Welcome!", color: "green"})
                 db.UserSession.create({
                     UserId: userData.id,
                     session:  session

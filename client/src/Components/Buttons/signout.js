@@ -13,7 +13,7 @@ function SignOut(){
     }
 
     return(
-        <button className="btn bg-purple" onClick={signout}>
+        <button className="btn bg-yellow" onClick={signout}>
             SignOut
         </button>
     )

@@ -12,7 +12,7 @@ function NavBar() {
     const [userBool, setUserBool] = useState(false)
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light">
+        <nav className="navbar navbar-expand-lg navbar-light" style={{borderBottom: "solid 5px #BFBFBF"}}>
 
             <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
                 <img className="navbar-brand" src="/footsteps2.png" alt="footsteps logo" style={{ width: "60px" }} />

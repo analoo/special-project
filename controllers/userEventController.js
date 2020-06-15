@@ -56,7 +56,7 @@ module.exports = {
                 }).then(dates => {
                     let months = []
 
-                    if (moment().startOf("month").format("YYYY-MM-DD") === moment(dates[0].startDate).startOf("month").format("YYYY-MM-DD")) {
+                    if (moment().startOf("month").format("YYYY-MM-DD") === moment(dates[0].startDate).startOf("month").format("YYYY-MM-DD") || userEvent.length === 0) {
                         // if (userEvent.length === 0) {
                         console.log("User has no events or is new")
                         res.send([{
