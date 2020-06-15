@@ -3,13 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import CheckInButton from "../Buttons/CheckInButton";
 import SignOut from "../Buttons/signout"
 import AddEvent from "../Buttons/addEvent"
-import API from "../../Utils/API"
 import { useUserContext } from "../../Utils/userContext"
 
 
 function NavBar() {
     const location = useLocation();
-    const [userBool, setUserBool] = useState(false)
     const { id } = useUserContext();
 
 
@@ -32,6 +30,7 @@ function NavBar() {
                             <Link to="/profile" className={location.pathname === "/profile" ? "nav-link active" : "nav-link"}>
                                 Profile</Link>
                         </ul>
+                        {/* <AddEvent/> */}
                         <CheckInButton />
                         <SignOut />
                     </div>

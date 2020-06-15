@@ -87,3 +87,9 @@
 .bg-yellow {
   background-color: #FAED84;
 }
+
+.avatar{
+  padding: 4px;
+  width: 50px;
+  border-Radius: 5px
+}

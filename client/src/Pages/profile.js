@@ -2,21 +2,18 @@ import React, { useEffect, useState } from "react";
 import API from "../Utils/API"
 
 function Profile() {
-    const [id, setId] = useState("");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("")
     const [zipCode, setZipCode] = useState("")
     const [city, setCity] = useState("")
     const [state, setState] = useState("")
-    const [color, setColor] = useState("grey")
-    const [style, setStyle] = useState({ backgroundColor: color, padding: "4px", width: "50px", borderRadius: "5px" })
+    const [color, setColor] = useState("#928AFF");
 
-
+    console.log(color)
 
     useEffect(() => {
         API.getUser()
             .then(res => {
-                setId(res.data.id)
                 setName(res.data.name)
                 setEmail(res.data.email)
                 setZipCode(res.data.zipcode)
@@ -43,7 +40,7 @@ function Profile() {
     return (
             <div class="card main-div col-md-8 col-sm-10" style={{top: "20px"}}>
                 <div className="card-header" style={{backgroundColor: "transparent"}}>
-                    {name ? <h2>   <img src="/mask-avatar.png" style={style} />Welcome Back, {name}!</h2> : null}
+                    {name ? <h2>   <img className="avatar" src="/mask-avatar.png" style={{backgroundColor: color}} alt="user-avatar"/>   Welcome Back, {name}!</h2> : null}
                 </div>
                 <div className="card-body">
                     <div className="form-group row">

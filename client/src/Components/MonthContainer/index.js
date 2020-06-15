@@ -8,12 +8,11 @@ function MonthContainer() {
 
     useEffect(() => {
         API.userMonths().then(res => {
+            console.log(res.data)
             setMonths(res.data)
         }).catch(err => 
             console.log(err))
       }, []);
-
-
 
     return (
         <div className="accordion mx-auto my-5" id="accordionExample" style={{maxWidth: "70rem"}}>

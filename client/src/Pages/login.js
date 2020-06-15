@@ -9,7 +9,6 @@ function Login() {
     const [email, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("")
-    const history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault();

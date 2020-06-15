@@ -3,14 +3,17 @@ import EventCard from "../EventCard";
 import API from "../../Utils/API"
 
 function MonthCard(props) {
+    let monthArray = ["0", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Nov", "Dec"]
     const [activities, setActivities] = useState([]);
-    console.log(activities)
-
+    let month = parseInt(props.data.split("-")[0])
+    let year = parseInt(props.data.split("-")[1])
+    let monthYear = monthArray[month]+year.toString()
+    let displayMonthYear = monthArray[month]+" "+year.toString()
+    
     useEffect(() => {
         API.activitiesByMonth({
-            UserId: 1,
-            start: props.data.start,
-            end: props.data.end
+            month: month,
+            year: year
         }).then(res => {
             setActivities(res.data)
         }).catch(err => 
@@ -19,18 +22,16 @@ function MonthCard(props) {
 
     return (
         <div className="card">
-            <div className="card-header bg-gray" id={"heading" + props.data.month.split(" ").join("")}>
+            <div className="card-header bg-gray" id={"heading" + monthYear}>
                 <h2 className="mb-0">
-                    <button className="btn btn-block text-left font-weight-bold collapsed" type="button" data-toggle="collapse" data-target={"#collapse" + props.data.month.split(" ").join("")} aria-expanded="false" aria-controls={"collapse" + props.data.month.split(" ").join("")}>
-                        {props.data.month}
+                    <button className="btn btn-block text-left font-weight-bold collapsed" type="button" data-toggle="collapse" data-target={"#collapse" + monthYear} aria-expanded="false" aria-controls={"collapse" + monthYear}>
+                        {displayMonthYear}
                     </button>
                 </h2>
             </div>
 
-            {activities.map(activity => (
-               
-                <EventCard data={activity} key={activity.id} id={"collapse" + props.data.month.split(" ").join("")} labelledby={"heading" + props.data.month.split(" ").join("")} month={props.data.month.split(" ").join("")}/>
-                
+            {activities.map(activity => (               
+                <EventCard data={activity} key={activity.id} id={"collapse" + monthYear} labelledby={"heading" + monthYear} month={monthYear}/>
             ))}
 
         </div>

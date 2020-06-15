@@ -26,6 +26,10 @@ export default {
         return axios.post("/api/event", event)
     },
 
+    updateEvent: function(eventID, event){
+        return axios.put(`/api/event/${eventID}`, event)
+    },
+
     findLocation: function(){
         return axios.get("/api/event")
     },

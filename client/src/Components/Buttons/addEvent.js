@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 
 
 function AddEvent() {
-    const history = useHistory();
 
     const AddEvent = () => {
         API.createEvent({
@@ -19,7 +18,10 @@ function AddEvent() {
             mask: 1,
             sixFeet: 0,
             outside: 0,
-            notes: "Hope this works"
+            notes: "Hope this works",
+            startMonth: 4,
+            startDay: 13,
+            startYear: 2020,
         }).then(res =>
             console.log(res))
         // history.push("/");

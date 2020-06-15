@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import API from "../Utils/API"
 import MainDiv from "../Components/Container/main-Div"
 
@@ -9,8 +8,6 @@ function Signup() {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [error, setError] = useState("")
-    const history = useHistory();
-
 
 
     const handleSubmit = (event) => {
@@ -22,7 +19,7 @@ function Signup() {
         }).then(res => {
             setError(res.data.message)
             if(res.data.code === 200){
-                history.push("/profile");
+                window.location.replace("/profile");
             }
             console.log(res)
         })
