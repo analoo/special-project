@@ -4,6 +4,7 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import API from "../../Utils/API";
+var moment = require("moment");
 
 let monthArray = ["0", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Nov", "Dec"]
 let colors = {
@@ -12,21 +13,22 @@ let colors = {
     green: "#00ce00",
     blue: "#006dff"
 }
-function eventJSON(color, activityName, location, notes, mask, sixFt, outside, contact, startTime, endTime, startDate, endDate) {
+
+function eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, startTime, endTime, startDate, endDate) {
     return (
         {
-            "color": color,
-            "name": activityName,
-            "location": location,
-            "notes": notes,
-            "mask": mask,
-            "sixFt": sixFt,
-            "outside": outside,
-            "contacts": contact,
-            "startTime": startTime,
-            "endTime": endTime,
-            "startDate": startDate,
-            "endDate": endDate
+            color: color,
+            name: activityName,
+            location: location,
+            notes: notes,
+            mask: mask,
+            sixFeet: sixFeet,
+            outside: outside,
+            contacts: contact,
+            startTime: startTime,
+            endTime: endTime,
+            startDate: startDate,
+            endDate: endDate
         }
     )
 }
@@ -38,10 +40,9 @@ function AddForm() {
     const [location, setLocation] = useState("");
     const [notes, setNotes] = useState("");
     const [mask, setMask] = useState(0);
-    const [sixFt, setSixFt] = useState(0);
+    const [sixFeet, setSixFeet] = useState(0);
     const [outside, setOutside] = useState(0);
     const [contact, setContact] = useState("");
-    // const [solo, setSolo] = useState(""); // or setContact(null)
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
     const [allDay, setAllDay] = useState("");
@@ -62,46 +63,13 @@ function AddForm() {
     const handleAdd = (event) => {
         event.preventDefault();
 
-        // Format: Day of week | Month | Day | Year
-        let start = state[0].startDate.toString().split(" ").slice(1, 4);
-        let end = state[0].endDate.toString().split(" ").slice(1, 4);
-
-        // Start Month: 6
-        let startMonth = monthArray.indexOf(start[0])
-        let endMonth = monthArray.indexOf(end[0])
-
-        // Add 0 to start month
-        if(startMonth < 10) {
-            let index = startMonth;
-            startMonth = "0" + index;
-        } 
-        if (endMonth < 10) {
-            let index = endMonth;
-            endMonth = "0" + index;
-        }
-
-        // Update start month
-        start[0] = startMonth;
-        end[0] = endMonth;
-
-        // Format - 2020, 18, 06
-        let startDate = start.reverse()
-        let startDay = startDate[1];
-        startDate[1] = startDate[2];
-        startDate[2] = startDay;
-        
-        let endDate = end.reverse()
-        let endDay = endDate[1];
-        endDate[1] = endDate[2];
-        endDate[2] = endDay;
-        
-        startDate = startDate.join("-");
-        endDate = endDate.join("-");
+        let startDate = moment(state[0].startDate).format("YYYY-MM-DD");   
+        let endDate = moment(state[0].endDate).format("YYYY-MM-DD");   
 
         console.log(startDate)
         console.log(endDate)
 
-        const eventBody = eventJSON(color, activityName, location, notes, mask, sixFt, outside, contact, startTime, endTime, startDate, endDate)
+        const eventBody = eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, startTime, endTime, startDate, endDate)
         console.log(eventBody)
 
         API.createEvent(eventBody)
@@ -194,8 +162,8 @@ function AddForm() {
                                         <label className="form-check-label" htmlFor="mask">Wore Mask <span role="img" aria-label="face with medical mask">😷</span></label>
                                     </div>
                                     <div className="form-check form-check-inline">
-                                        <input className="form-check-input" type="checkbox" id="sixFt" value={sixFt} onChange={() => setSixFt(1)}/>
-                                        <label className="form-check-label" htmlFor="sixFt">6ft Apart<span role="img" aria-label="footprints">👣</span></label>
+                                        <input className="form-check-input" type="checkbox" id="sixFeet" value={sixFeet} onChange={() => setSixFeet(1)}/>
+                                        <label className="form-check-label" htmlFor="sixFeet">6ft Apart<span role="img" aria-label="footprints">👣</span></label>
                                     </div>
                                     <div className="form-check form-check-inline">
                                         <input className="form-check-input" type="checkbox" id="outside" value={outside} onChange={() => setOutside(1)}/>

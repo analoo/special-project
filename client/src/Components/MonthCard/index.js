@@ -4,9 +4,11 @@ import API from "../../Utils/API"
 
 function MonthCard(props) {
     const [activities, setActivities] = useState([]);
+    console.log(activities)
 
     useEffect(() => {
         API.activitiesByMonth({
+            UserId: 1,
             start: props.data.start,
             end: props.data.end
         }).then(res => {
@@ -17,19 +19,19 @@ function MonthCard(props) {
 
     return (
         <div className="card">
-            <div className="card-header bg-gray" id="headingOne">
+            <div className="card-header bg-gray" id={"heading" + props.data.month.split(" ").join("")}>
                 <h2 className="mb-0">
-                    <button className="btn btn-block text-left font-weight-bold collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <button className="btn btn-block text-left font-weight-bold collapsed" type="button" data-toggle="collapse" data-target={"#collapse" + props.data.month.split(" ").join("")} aria-expanded="false" aria-controls={"collapse" + props.data.month.split(" ").join("")}>
                         {props.data.month}
                     </button>
                 </h2>
             </div>
 
-            <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                {activities.map( (activity,i) => (
-                    <EventCard data={activity} key={`${i}-${activity.Event.name}`}/>
-                ))}
-            </div>
+            {activities.map(activity => (
+               
+                <EventCard data={activity} key={activity.id} id={"collapse" + props.data.month.split(" ").join("")} labelledby={"heading" + props.data.month.split(" ").join("")} month={props.data.month.split(" ").join("")}/>
+                
+            ))}
 
         </div>
     )
