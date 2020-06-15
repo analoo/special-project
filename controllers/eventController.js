@@ -1,5 +1,4 @@
 const db = require("../models")
-const auth = require("./userSession")
 
 module.exports = {
     create: (req, res) => {
@@ -30,8 +29,60 @@ module.exports = {
                         sixFeet: req.body.sixFeet,
                         outside: req.body.outside,
                         notes: req.body.notes,
+                        startMonth: req.body.startMonth,
+                        startDay: req.body.startDay,
+                        startYear: req.body.startYear,
                         EventId: event.id,
                         UserId: res1.UserId
+                    })
+                        .then(userEvent => {
+                            // res.json(userEvent)
+                            console.log(userEvent)
+                        })
+                        .catch(err => console.log(err));
+                })
+                .catch(err => res.json(err))
+        }).catch(err => {
+            res.send(err)
+        })
+    },
+
+    edit: (req, res) => {
+        const cookieValues = req.headers.cookie.split(";");
+        let userSession = null;
+        cookieValues.forEach(element => {
+            if (element.split("=")[0].trim() === "footsteps_userSession") {
+                userSession = decodeURIComponent(element.split("=")[1].trim())
+            }
+        })
+        db.UserSession.findOne({
+            where: {
+                session: userSession
+            }
+        }).then(res1 => {
+            db.Event
+                .update(req.body, {
+                    where: {
+                        id: req.params.EventId
+                    }
+                })
+                .then(event => {
+                    db.UserEvent.update({
+                        color: req.body.color,
+                        startDate: req.body.startDate,
+                        endDate: req.body.endDate,
+                        startTime: req.body.startTime,
+                        endTime: req.body.endTime,
+                        contacts: req.body.contacts,
+                        mask: req.body.mask,
+                        sixFeet: req.body.sixFeet,
+                        outside: req.body.outside,
+                        notes: req.body.notes,
+                        startMonth: req.body.startMonth,
+                        startDay: req.body.startDay,
+                        startYear: req.body.startYear,
+                    },  {where: {
+                        EventId: req.params.EventId}
                     })
                         .then(userEvent => {
                             // res.json(userEvent)
@@ -50,7 +101,7 @@ module.exports = {
     delete: (req, res) => {
         db.Event
             .destroy({
-                where: { id: req.body.eventId }
+                where: { id: req.params.eventId }
             })
             .then(event => {
                 res.json(event)

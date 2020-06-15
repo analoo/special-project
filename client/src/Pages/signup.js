@@ -22,7 +22,7 @@ function Signup() {
         }).then(res => {
             setError(res.data.message)
             if(res.data.code === 200){
-                history.push("/profile");
+                window.location.replace("/profile");
             }
             console.log(res)
         })
