@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import '../../App.css';
+import UserProvider from "../../Utils/userProvider"
 
 import Home from "../../Pages/home";
 import NoMatch from "../../Pages/noMatch";
@@ -13,7 +14,6 @@ import NavBar from "../NavBar";
 import Footer from "../Footer";
 
 function Router() {
-
     return (
         <BrowserRouter>
             <div>

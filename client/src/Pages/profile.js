@@ -20,9 +20,9 @@ function Profile() {
                 setName(res.data.name)
                 setEmail(res.data.email)
                 setZipCode(res.data.zipcode)
-                setCity("San Francisco")
-                setState("CA")
-                setColor("blue")
+                setCity(res.data.city)
+                setState(res.data.state)
+                setColor(res.data.color)
             })
     }, [])
 
@@ -31,9 +31,9 @@ function Profile() {
         API.updateUser({
             name: name,
             zipcode: zipCode,
-            // city: city,
-            // state: state,
-            // color: color
+            city: city,
+            state: state,
+            color: color
         }).then(res =>
             console.log(res.data))
 
@@ -41,16 +41,11 @@ function Profile() {
 
 
     return (
-        <div>
-            <div class="card main-div col-md-8 col-sm-10">
-                <div className="card-header">
+            <div class="card main-div col-md-8 col-sm-10" style={{top: "20px"}}>
+                <div className="card-header" style={{backgroundColor: "transparent"}}>
                     {name ? <h2>   <img src="/mask-avatar.png" style={style} />Welcome Back, {name}!</h2> : null}
-
                 </div>
                 <div className="card-body">
-                    {/* <h5 className="card-title">Name: {name}</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">User Id: {id}</h6>
-                     */}
                     <div className="form-group row">
                         <label className="col-sm-2 col-md-4 col-form-label">Email</label>
                         <div className="col-sm-10 col-md-4">
@@ -125,7 +120,7 @@ function Profile() {
 
                             </div>
                         </div>
-                        <div className="form-group row">
+                        <div className="form-group row align-right">
                             <button type="button" className="btn bg-gray" onClick={() => window.location.reload(false)}>Cancel</button>
                             <button type="submit" className="btn bg-dark-purple">Save</button>
                         </div>
@@ -134,9 +129,6 @@ function Profile() {
                     </form>
                 </div>
             </div>
-
-        </div>
-
 
     )
 }
