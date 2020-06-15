@@ -7,7 +7,8 @@ function MonthCard(props) {
     const [activities, setActivities] = useState([]);
     let month = parseInt(props.data.split("-")[0])
     let year = parseInt(props.data.split("-")[1])
-    let monthYear = monthArray[month] +" "+ year.toString()
+    let monthYear = monthArray[month]+year.toString()
+    let displayMonthYear = monthArray[month]+" "+year.toString()
     
     useEffect(() => {
         API.activitiesByMonth({
@@ -24,7 +25,7 @@ function MonthCard(props) {
             <div className="card-header bg-gray" id={"heading" + monthYear}>
                 <h2 className="mb-0">
                     <button className="btn btn-block text-left font-weight-bold collapsed" type="button" data-toggle="collapse" data-target={"#collapse" + monthYear} aria-expanded="false" aria-controls={"collapse" + monthYear}>
-                        {monthYear}
+                        {displayMonthYear}
                     </button>
                 </h2>
             </div>
