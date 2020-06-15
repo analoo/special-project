@@ -14,14 +14,14 @@ module.exports = {
             .then(async function (userData) {
                 console.log(userData)
                 if (!userData) {
-                    res.send({ user: false, message: "No user with that email" });
+                    res.send({ user: false, message: "No Account Associated with that email", color: "red"});
                     return
                 }
 
                 if (await bcrypt.compare(req.body.password, userData.password)) {
                     console.log("password matched")
                     let session = await bcrypt.hash(keys.cookie.keyWord, 10)
-                    res.cookie("footsteps_userSession", session).send({user: userData.id, message: "Welcome Back" })
+                    res.cookie("footsteps_userSession", session).send({user: userData.id, message: "Welcome Back", color: "green"})
                     console.log("Password found a match!")
                     db.UserSession.create({
                         UserId: userData.id,
@@ -31,7 +31,7 @@ module.exports = {
                     })
                 }
                 else {
-                    res.send({ user: false, message: "Password Incorrect" });
+                    res.send({ user: false, message: "Password Incorrect", color: "red"});
                     console.log("Incorrect Password")
                 }
             })

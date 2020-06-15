@@ -26,6 +26,22 @@ module.exports = function (sequelize, DataTypes) {
                 // 10 digits
             }
         },
+
+        // color for avatar
+        color: {
+            type: DataTypes.STRING,
+            defaultValue: "grey"
+        },
+
+        city: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+
+        state: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         // Zipcode
         zipcode: {
             type: DataTypes.STRING,

@@ -9,6 +9,7 @@ function Login() {
     const [email, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("")
+    const [color, setColor] = useState("")
     const history = useHistory();
 
     const handleSubmit = (event) => {
@@ -18,6 +19,7 @@ function Login() {
             password: password,
         }).then(res => {
             setError(res.data.message)
+            setColor(res.data.color)
             // history.push("/");
             console.log(res)
         })
@@ -27,12 +29,12 @@ function Login() {
 
     return (
         <MainDiv>
-        <div className="col-md-6 col-sm-10" style={{border: "solid grey 1px"}}>
+        <div className="col-md-6 col-sm-10" id="bg-img" style={{border: "solid grey 1px", height: "100%", verticalAlign: "middle"}}>
             <h5 className="card-title">Sign In</h5>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} style={{top:"50%"}}>
                 {error === "" ?
                 <div className="alert" style={{display: "inline-block"}}></div> : 
-                    <div className="alert" role="alert" style={{display: "inline-block", color: "red"}}>
+                    <div className="alert" role="alert" style={{display: "inline-block"}}>
                     {error}
                 </div>}
                 <div className="form-group row">
@@ -58,11 +60,12 @@ function Login() {
                 <div className="form-group row">
                 <div className="col-sm-2 col-md-2 col-form-label"></div>
                     <div className="col-sm-10 col-md-6">
-                    <button className="btn btn-submit" type="submit" value="Login">Login</button>
+                    <button className="btn btn-submit bg-yellow" type="submit" value="Login">Login</button>
                     </div>
                 </div>
 
             </form>
+
         </div>
         </MainDiv>
     )

@@ -75,7 +75,7 @@ function Signup() {
                     <div className="form-group row">
                         <div className="col-sm-2 col-md-2 col-form-label"></div>
                         <div className="col-sm-10 col-md-6">
-                            <button className="btn btn-submit" type="submit" value="Login">Login</button>
+                            <button className="btn btn-submit bg-yellow" type="submit" value="Login">Login</button>
                         </div>
                     </div>
 
