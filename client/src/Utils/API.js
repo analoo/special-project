@@ -10,6 +10,10 @@ export default {
         return axios.post("/api/user", user)
     },
 
+    updateUser: function(user){
+        return axios.put("/api/user", user)
+    },
+
     login: function(user){
         return axios.post("/auth", user)
     },

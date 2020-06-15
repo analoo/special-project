@@ -31,14 +31,13 @@ function Signup() {
 
     return (
         <MainDiv>
-            <div className="col-md-6 col-sm-10" style={{ border: "solid grey 1px" }}>
-                <h5 class="card-title">Sign Up</h5>
+        <div className="col-md-6 col-sm-10" id="bg-img" style={{border: "solid grey 1px", padding: "10px", top: "50px", height: "100%", verticalAlign: "middle"}}>
+        {error === "" ?
+                <div className="alert" style={{display: "inline-block"}}></div> : 
+                    <div className="alert" role="alert" style={{display: "inline-block"}}>
+                    {error}
+                </div>}                <h5 class="card-title">Sign Up</h5>
                 <form onSubmit={handleSubmit}>
-                    {error === "" ?
-                        <div className="alert" style={{ display: "inline-block" }}></div> :
-                        <div className="alert" role="alert" style={{ display: "inline-block", color: "red" }}>
-                            {error}
-                        </div>}
                     <div className="form-group row">
                         <label className="col-sm-2 col-md-4 col-form-label">Name</label>
                         <div className="col-sm-10 col-md-4">
@@ -75,7 +74,7 @@ function Signup() {
                     <div className="form-group row">
                         <div className="col-sm-2 col-md-2 col-form-label"></div>
                         <div className="col-sm-10 col-md-6">
-                            <button className="btn btn-submit" type="submit" value="Login">Login</button>
+                            <button className="btn btn-submit bg-yellow" type="submit" value="Login">Login</button>
                         </div>
                     </div>
 
