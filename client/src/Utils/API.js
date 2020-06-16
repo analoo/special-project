@@ -15,7 +15,9 @@ export default {
     },
 
     login: function(user){
+        console.log(user)
         return axios.post("/auth", user)
+
     },
 
     signOut: function() {

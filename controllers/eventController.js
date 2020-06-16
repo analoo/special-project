@@ -18,6 +18,7 @@ module.exports = {
             db.Event
                 .create(req.body, {})
                 .then(event => {
+                    console.log(event)
                     db.UserEvent.create({
                         color: req.body.color,
                         startDate: req.body.startDate,

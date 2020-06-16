@@ -14,7 +14,7 @@ let colors = {
     blue: "#006dff"
 }
 
-function eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, startTime, endTime, startDate, endDate) {
+function eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, startTime, endTime, startDate, endDate, startDay, startMonth, startYear) {
     return (
         {
             color: color,
@@ -28,7 +28,10 @@ function eventJSON(color, activityName, location, notes, mask, sixFeet, outside,
             startTime: startTime,
             endTime: endTime,
             startDate: startDate,
-            endDate: endDate
+            endDate: endDate,
+            startDay: startDay,
+            startMonth: startMonth,
+            startYear: startYear
         }
     )
 }
@@ -43,6 +46,8 @@ function AddForm() {
     const [sixFeet, setSixFeet] = useState(0);
     const [outside, setOutside] = useState(0);
     const [contact, setContact] = useState("");
+    let newTime = moment({ hour:15, minute:10, seconds:0}).format("hh:mm:ss")
+    console.log(newTime)
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
     const [allDay, setAllDay] = useState("");
@@ -64,12 +69,13 @@ function AddForm() {
         event.preventDefault();
 
         let startDate = moment(state[0].startDate).format("YYYY-MM-DD");   
-        let endDate = moment(state[0].endDate).format("YYYY-MM-DD");   
+        let endDate = moment(state[0].endDate).format("YYYY-MM-DD");
+        let startDay = moment(state[0].startDate).date();
+        let startMonth = moment(state[0].startDate).month();
+        let startYear = moment(state[0].startDate).month();
 
-        console.log(startDate)
-        console.log(endDate)
 
-        const eventBody = eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, startTime, endTime, startDate, endDate)
+        const eventBody = eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, startTime, endTime, startDate, endDate, startDay, startMonth, startYear)
         console.log(eventBody)
 
         API.createEvent(eventBody)
