@@ -11,7 +11,7 @@ function EventCard(props) {
         console.log("You tried to delete me!")
         if(remove){
             API.deleteEvent(event).then(res => {
-                if(res.data == 1){
+                if(res.data === 1){
                     window.location.reload();
                 }
             })
