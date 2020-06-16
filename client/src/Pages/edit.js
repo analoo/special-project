@@ -77,7 +77,7 @@ function Edit(props) {
                 setOutside(res.data.outside)
                 setContact(res.data.contacts);
                 setEventID(res.data.Event.id)
-                if(res.data.startTime.split(":")[0] > 12){
+                if(res.data.startTime.split(":")[0] >= 13){
                     let time = `${res.data.startTime.split(":")[0]-12}:${res.data.startTime.split(":")[1]}`
                     setStartTime(time)
                     setStartOS("12")
@@ -86,7 +86,7 @@ function Edit(props) {
                     setStartTime(`${res.data.startTime.split(":")[0]}:${res.data.startTime.split(":")[1]}`)
                     setStartOS("0")
                 }
-                if(res.data.endTime.split(":")[0] > 12){
+                if(res.data.endTime.split(":")[0] >= 13){
                     let time = `${res.data.endTime.split(":")[0]-12}:${res.data.endTime.split(":")[1]}`
                     setEndTime(time)
                     setEndOS("12")
@@ -137,7 +137,7 @@ function Edit(props) {
 
     const onChangeTimeHandler = () => {
         setStartOS("0")
-        setStartTime("00:01");
+        setStartTime("12:01");
         setEndOS("12")
         setEndTime("11:59");
         setAllDay(1);

@@ -106,7 +106,7 @@ function AddForm() {
 
     const onChangeTimeHandler = () => {
         setStartOS("0")
-        setStartTime("00:01");
+        setStartTime("12:01");
         setEndOS("12")
         setEndTime("11:59");
         setAllDay(1);
