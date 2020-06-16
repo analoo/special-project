@@ -50,6 +50,11 @@ module.exports = function (sequelize, DataTypes) {
                 len: [5, 5]
             }
         },
+        // ll
+        ll: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
 
         // password
         password: {

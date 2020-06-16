@@ -40,8 +40,8 @@ export default {
         return axios.delete(`/api/event/${event}`)
     },
 
-    findLocation: function(){
-        return axios.get("/api/event")
+    findLocation: function(search){
+        return axios.put("/api/event",search)
     },
 
     userMonths: function(){
