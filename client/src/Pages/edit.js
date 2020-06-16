@@ -210,7 +210,7 @@ function Edit(props) {
                                         <input type="text" className="form-control" placeholder="08:00" value={startTime} onChange={(event) => setStartTime(event.target.value)} />
                                     </div>
                                     <div className="col-md-3">
-                                        {startOS == "0" ?
+                                        {startOS === "0" ?
                                             <select className="form-control" id="exampleFormControlSelect1" onChange={e => setStartOS(e.target.value)}>
                                                 <option value="0">AM</option>
                                                 <option value="12" >PM</option>
@@ -232,7 +232,7 @@ function Edit(props) {
                                         <input type="text" className="form-control" placeholder="09:00" value={endTime} onChange={(event) => setEndTime(event.target.value)} />
                                     </div>
                                     <div className="col-md-3">
-                                        {endOS == "0" ?
+                                        {endOS === "0" ?
                                             <select className="form-control" id="exampleFormControlSelect1" onChange={e => setEndOS(e.target.value)}>
                                                 <option value="0">AM</option>
                                                 <option value="12" >PM</option>
