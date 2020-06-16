@@ -97,7 +97,7 @@
   height: 20vh
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .footer {position: static}
   .foot-base {height: 0vh}
 }

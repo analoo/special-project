@@ -4,6 +4,7 @@ const axios = require("axios")
 
 module.exports = {
     find: (req, res) => {
+        console.log(req.body)
         request(
             {
                 url: 'https://api.foursquare.com/v2/venues/explore',
@@ -11,10 +12,10 @@ module.exports = {
                 qs: {
                     client_id: keys.foursquare.clientID,
                     client_secret: keys.foursquare.clientSecret,
-                    ll: "40.74224,-73.99386",
-                    query: 'starbucks',
+                    ll: req.body.ll,
+                    query: req.body.query,
                     v: '20180323',
-                    limit: 1000,
+                    limit: 5,
                 },
             },
             function (err, resp, body) {

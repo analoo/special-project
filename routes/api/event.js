@@ -7,7 +7,7 @@ const externalAPIs = require("../../controllers/externalAPIs");
 router
     .route("/")
     .post(eventController.create)
-    .get(externalAPIs.find)
+    .put(externalAPIs.find)
 
 
 //Matches with "/api/event/:eventid"
