@@ -67,7 +67,7 @@ function Login() {
                 {/* <div className="col-sm-2 col-md-2 col-form-label">
                 </div> */}
                 <div className="col-sm-10 col-md-8">
-                    <button className="btn btn-submit bg-yellow" type="submit" value="Login">Login</button>
+                    <button className="btn btn-submit bg-yellow" type="submit" value="Login">Sign In</button>
                 </div>
             </div>
             </form>

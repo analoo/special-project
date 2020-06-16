@@ -82,7 +82,7 @@ function Signup() {
                     <div className="form-group row justify-content-center m-4">
                         {/* <div className="col-sm-2 col-md-2 col-form-label"></div> */}
                         <div className="col-sm-10 col-md-8">
-                            <button className="btn btn-submit bg-yellow" type="submit" value="Login">Login</button>
+                            <button className="btn btn-submit bg-yellow" type="submit" value="Login">Sign Up</button>
                         </div>
                     </div>
                 </form>

@@ -24,7 +24,7 @@ function NavBar() {
                         <ul className="navbar-nav mr-auto">
                             <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
                                 Home</Link>
-                            <Link to="/activities" className={location.pathname === "/activities" ? "nav-link active" : "nav-link"}>
+                            <Link to="/activities" className={location.pathname === "/activities" ? "nav-link active dark-purple" : "nav-link"}>
                                 Activities</Link>
                             <Link to="/profile" className={location.pathname === "/profile" ? "nav-link active" : "nav-link"}>
                                 Profile</Link>
@@ -47,7 +47,7 @@ function NavBar() {
                         <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
                             Home</Link>
                     </ul>
-                    <Link to="/login" className={location.pathname === "/login" ? "nav-link active" : "nav-link"}>
+                    <Link to="/signin" className={location.pathname === "/signin" ? "nav-link active" : "nav-link"}>
                         <button className="btn bg-yellow">
                             Sign In</button>
                     </Link>
