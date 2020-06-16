@@ -6,7 +6,6 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import API from "../../Utils/API";
 var moment = require("moment");
 
-let monthArray = ["0", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Nov", "Dec"]
 let colors = {
     purple: "#c31bfe",
     orange: "#ff8400",
@@ -37,7 +36,7 @@ function eventJSON(color, activityName, location, notes, mask, sixFeet, outside,
 }
 
 
-function AddForm() {
+function EditForm() {
     const [color, setColor] = useState("#928AFF");
     const [activityName, setActivityName] = useState("");
     const [location, setLocation] = useState("");
@@ -105,10 +104,8 @@ function AddForm() {
     }
 
     const onChangeTimeHandler = () => {
-        setStartOS("0")
-        setStartTime("12:01");
-        setEndOS("12")
-        setEndTime("11:59");
+        setStartTime("None");
+        setEndTime("None");
         setAllDay(1);
     };
 
@@ -185,8 +182,8 @@ function AddForm() {
                                         </div>
                                         <div className="col-md-3">
                                             <select className="form-control" id="exampleFormControlSelect1" onChange={e => setStartOS(e.target.value)}>
-                                                {setStartOS=="0" ? <option value="0" selected>AM</option> :<option value="0">AM</option>}
-                                                {setStartOS=="12" ? <option  value="12" selected>PM</option> :<option value="12">PM</option>}
+                                                <option value="0">AM</option>
+                                                <option value="12">PM</option>
                                             </select>
                                         </div>
                                     </div>
@@ -200,11 +197,10 @@ function AddForm() {
                                             <input type="text" className="form-control" placeholder="09:00" value={endTime} onChange={(event) => setEndTime(event.target.value)} />
                                         </div>
                                         <div className="col-md-3">
-                                        <select className="form-control" id="exampleFormControlSelect1" onChange={e => setStartOS(e.target.value)}>
-                                                {setEndOS=="0" ? <option selected value="0">AM</option> :<option value="0">AM</option>}
-                                                {setEndOS=="12" ? <option selected value="12">PM</option> :<option value="12">PM</option>}
+                                            <select className="form-control" id="exampleFormControlSelect2" onChange={e => setEndOS(e.target.value)}>
+                                                <option value="0">AM</option>
+                                                <option value="12">PM</option>
                                             </select>
-
                                         </div>
                                     </div>
                                     <div className="col-1 mt-4 font-weight-bold">
@@ -264,4 +260,4 @@ function AddForm() {
     )
 }
 
-export default AddForm;
+export default EditForm;

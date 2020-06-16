@@ -64,7 +64,8 @@ module.exports = {
             db.Event
                 .update(req.body, {
                     where: {
-                        id: req.params.EventId
+                        id: req.params.EventId,
+                        UserID: res1.UserId
                     }
                 })
                 .then(event => {
@@ -82,8 +83,10 @@ module.exports = {
                         startMonth: req.body.startMonth,
                         startDay: req.body.startDay,
                         startYear: req.body.startYear,
-                    },  {where: {
-                        EventId: req.params.EventId}
+                    }, {
+                        where: {
+                            EventId: req.params.EventId
+                        }
                     })
                         .then(userEvent => {
                             // res.json(userEvent)
@@ -100,15 +103,35 @@ module.exports = {
 
 
     delete: (req, res) => {
-        db.Event
-            .destroy({
-                where: { id: req.params.eventId }
-            })
-            .then(event => {
-                res.json(event)
-            })
-            .catch(err => res.json(err))
+        const cookieValues = req.headers.cookie.split(";");
+        let userSession = null;
+        cookieValues.forEach(element => {
+            if (element.split("=")[0].trim() === "footsteps_userSession") {
+                userSession = decodeURIComponent(element.split("=")[1].trim())
+            }
+        })
+        db.UserSession.findOne({
+            where: {
+                session: userSession
+            }
+        }).then(res1 => {
+            db.UserEvent
+                .destroy({
+                    where: {
+                        id: req.params.eventId,
+                        UserId: res1.UserId
+                    }
+                })
+                .then(event => {
+                    console.log(event)
+                    res.json(event)
+                })
+                .catch(err => res.json(err))
 
-    }
+
+        }).catch(err => {
+            res.send(err)
+        })
+    },
 
 }

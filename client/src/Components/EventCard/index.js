@@ -1,9 +1,26 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import API from "../../Utils/API"
+
 var moment = require('moment');
 
 
 function EventCard(props) {
-    let contacts = props.data.contacts.split(",")
+    const [remove, setRemove] = useState(0)
+
+    const deleteEvent = (event) => {
+        console.log("You tried to delete me!")
+        if(remove){
+            API.deleteEvent(event).then(res => {
+                if(res.data == 1){
+                    window.location.reload();
+                }
+            })
+        }
+    }
+
+    useEffect(() => {
+        setRemove(0)
+    }, [])
 
 
     return (
@@ -26,15 +43,15 @@ function EventCard(props) {
                         </div>
                     </div>
                     <div>
-                    <i class="far fa-trash-alt float-right pt-2 px-2 dark-purple"></i>
-                    <i className="fas fa-edit float-right pt-2 px-2 dark-purple"></i>
+                    <button className="float-right select-button" id={`delete-${props.data.id}`}  value={props.data.id} onClick={e => deleteEvent(props.data.id)}><i class="far fa-trash-alt pt-2 px-2 dark-purple"></i></button>
+                    <button className="float-right select-button" id={`update-${props.data.id}`} value={props.data.id} onClick={e => console.log("edit")}><i className="fas fa-edit float-right pt-2 px-2 dark-purple"></i></button>
                     </div>
 
                     <div className="card-body m-3" >
                         <div className="row" style={{ fontSize: "larger" }}>
                             <div className="col-md-9 col-sm-9" style={{ margin: "none", padding: "none", verticalAlign: "middle" }}>
                                 <i class="far fa-clock float-left"></i>
-                                <p className="text-left float-left px-2">{moment(props.data.startDate).format("MMM DD")}, {props.data.startTime} - {moment(props.data.endDate).format("MMM DD")}, {props.data.endTime}</p>
+                                <p className="text-left float-left px-2">{moment.utc(props.data.startDate).format("MMM DD")}, {props.data.startTime.split(":")[0] > 12 ? `${props.data.startTime.split(":")[0]-12}:${props.data.startTime.split(":")[1]} PM` : `${props.data.startTime.split(":")[0]}:${props.data.startTime.split(":")[1]} AM`} - {moment.utc(props.data.endDate).format("MMM DD")}, {props.data.endTime.split(":")[0] > 12 ? `${props.data.endTime.split(":")[0]-12}:${props.data.endTime.split(":")[1]} PM` : `${props.data.endTime.split(":")[0]}:${props.data.endTime.split(":")[1]} AM`}</p>
                             </div>
                         </div>
 
