@@ -8,6 +8,9 @@ function Activities(){
             <h1 className="my-3">Activities</h1>
             <CheckInButton/>
             <MonthContainer/>
+            <div className="foot-base">
+
+</div>
         </div>
     )
 }

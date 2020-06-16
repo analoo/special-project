@@ -4,8 +4,10 @@ import SearchBar from "../Components/CalendarForm/searchBar"
 function Home(){
     return(
         <div>
-            <SearchBar/>
            This is the home page
+           <div className="foot-base">
+
+</div>
         </div>
     )
 }

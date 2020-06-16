@@ -10,7 +10,6 @@ function NavBar() {
     const location = useLocation();
     const { id } = useUserContext();
 
-
     return (
         <div>
             {id ?
