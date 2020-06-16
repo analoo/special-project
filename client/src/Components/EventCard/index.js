@@ -44,7 +44,7 @@ function EventCard(props) {
                     </div>
                     <div>
                     <button className="float-right select-button" id={`delete-${props.data.id}`}  value={props.data.id} onClick={e => deleteEvent(props.data.id)}><i class="far fa-trash-alt pt-2 px-2 dark-purple"></i></button>
-                    <button className="float-right select-button" id={`update-${props.data.id}`} value={props.data.id} onClick={e => console.log("edit")}><i className="fas fa-edit float-right pt-2 px-2 dark-purple"></i></button>
+                    <a href={(`/activities/${props.data.id}`)} type="button" className="float-right select-button" id={`update-${props.data.id}`} value={props.data.id} onClick={e => console.log("edit")}><i className="fas fa-edit float-right pt-2 px-2 dark-purple"></i></a>
                     </div>
 
                     <div className="card-body m-3" >

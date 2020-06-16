@@ -74,15 +74,15 @@ function AddForm() {
         let startDay = moment(state[0].startDate).date();
         let startMonth = moment(state[0].startDate).month() + 1;
         let startYear = moment(state[0].startDate).year();
-        
+
         let parsedStartHour = parseInt(startTime.split(":")[0]) + parseInt(startOS)
         let parsedStartMinute = parseInt(startTime.split(":")[1])
-        let refStart = moment({hour: parsedStartHour, minute: parsedStartMinute, seconds: 0}).format("HH:mm:ss")
-      
+        let refStart = moment({ hour: parsedStartHour, minute: parsedStartMinute, seconds: 0 }).format("HH:mm:ss")
+
         let parsedEndHour = parseInt(endTime.split(":")[0]) + parseInt(endOS)
         let parsedEndMinute = parseInt(endTime.split(":")[1])
-        let refEnd = moment({hour: parsedEndHour, minute: parsedEndMinute, seconds: 0}).format("HH:mm:ss")
-      
+        let refEnd = moment({ hour: parsedEndHour, minute: parsedEndMinute, seconds: 0 }).format("HH:mm:ss")
+
 
 
         const eventBody = eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, refStart, refEnd, startDate, endDate, startDay, startMonth, startYear)
@@ -178,32 +178,42 @@ function AddForm() {
                                 <div className="row mb-4 px-4">
                                     <div class="form-row">
                                         <div className="col-md-4">
-                                        <label className="float-left" htmlFor="startTime">Start Time</label>
+                                            <label className="float-left" htmlFor="startTime">Start Time</label>
                                         </div>
                                         <div className="col-md-3">
                                             <input type="text" className="form-control" placeholder="08:00" value={startTime} onChange={(event) => setStartTime(event.target.value)} />
                                         </div>
                                         <div className="col-md-3">
-                                            <select className="form-control" id="exampleFormControlSelect1" onChange={e => setStartOS(e.target.value)}>
-                                                {setStartOS=="0" ? <option value="0" selected>AM</option> :<option value="0">AM</option>}
-                                                {setStartOS=="12" ? <option  value="12" selected>PM</option> :<option value="12">PM</option>}
-                                            </select>
+                                            {setStartOS == "0" ?
+                                                <select className="form-control" id="exampleFormControlSelect1" onChange={e => setStartOS(e.target.value)}>
+                                                    <option value="0">AM</option>
+                                                    <option value="12" >PM</option>
+                                                </select> :
+                                                <select className="form-control" id="exampleFormControlSelect1" onChange={e => setStartOS(e.target.value)}>
+                                                    <option value="12">PM</option>
+                                                    <option value="0" >AM</option>
+                                                </select>}
                                         </div>
                                     </div>
 
                                     <div class="form-row">
-                                    <div className="col-md-4">
-                                        <label className="float-left" htmlFor="endTime">End Time</label>
+                                        <div className="col-md-4">
+                                            <label className="float-left" htmlFor="endTime">End Time</label>
                                         </div>
 
                                         <div className="col-md-3">
                                             <input type="text" className="form-control" placeholder="09:00" value={endTime} onChange={(event) => setEndTime(event.target.value)} />
                                         </div>
                                         <div className="col-md-3">
-                                        <select className="form-control" id="exampleFormControlSelect1" onChange={e => setStartOS(e.target.value)}>
-                                                {setEndOS=="0" ? <option selected value="0">AM</option> :<option value="0">AM</option>}
-                                                {setEndOS=="12" ? <option selected value="12">PM</option> :<option value="12">PM</option>}
-                                            </select>
+                                        {setEndOS == "0" ?
+                                                <select className="form-control" id="exampleFormControlSelect1" onChange={e => setEndOS(e.target.value)}>
+                                                    <option value="0">AM</option>
+                                                    <option value="12" >PM</option>
+                                                </select> :
+                                                <select className="form-control" id="exampleFormControlSelect1" onChange={e => setEndOS(e.target.value)}>
+                                                    <option value="12">PM</option>
+                                                    <option value="0" >AM</option>
+                                                </select>}
 
                                         </div>
                                     </div>

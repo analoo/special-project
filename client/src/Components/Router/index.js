@@ -10,6 +10,7 @@ import Profile from "../../Pages/profile";
 import Activities from "../../Pages/activities";
 import Login from "../../Pages/login";
 import Signup from "../../Pages/signup";
+import Edit from "../../Pages/edit"
 
 import NavBar from "../NavBar";
 import Footer from "../Footer";
@@ -25,6 +26,7 @@ function Router() {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/activities" component={Activities} />
+                    <Route exact path="/activities/:id" component={Edit} />
                     <Route exact path="/profile" component={Profile} />
                     <Route component={NoMatch} />
                 </Switch> :
