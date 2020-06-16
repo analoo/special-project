@@ -28,53 +28,63 @@ function Signup() {
 
     return (
         <MainDiv>
-        <div className="col-md-6 col-sm-10" id="bg-img" style={{border: "solid grey 1px", padding: "10px", top: "50px", height: "100%", verticalAlign: "middle"}}>
-        {error === "" ?
-                <div className="alert" style={{display: "inline-block"}}></div> : 
+        <div className="col-md-6 col-sm-10 border rounded" id="bg-img" style={{border: "solid grey 1px", padding: "20px", top: "50px", height: "100%", verticalAlign: "middle"}}>
+            <h3 class="card-title dark-purple">Sign Up</h3>
+            {error === "" ?
+                <div className="alert" style={{display: "inline-block"}}></div> 
+                : 
                     <div className="alert" role="alert" style={{display: "inline-block"}}>
-                    {error}
-                </div>}                <h5 class="card-title">Sign Up</h5>
+                        {error}
+                    </div>
+                }                
                 <form onSubmit={handleSubmit}>
                     <div className="form-group row">
-                        <label className="col-sm-2 col-md-4 col-form-label">Name</label>
-                        <div className="col-sm-10 col-md-4">
+                        <label className="col-sm-2 col-md-4 col-form-label dark-purple font-weight-bold">Name</label>
+                        <div className="col-sm-10 col-md-8">
                             <input
                                 type="text"
                                 name="name"
                                 value={name}
+                                className="form-control"
+                                placeholder="Joe Smith"
                                 onChange={e => setName(e.target.value)}
-                                />
+                            />
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label className="col-sm-2 col-md-4 col-form-label">Email</label>
-                        <div className="col-sm-10 col-md-4">
+                        <label className="col-sm-2 col-md-4 col-form-label dark-purple font-weight-bold">Email</label>
+                        <div className="col-sm-10 col-md-8">
                             <input
                                 type="text"
                                 name="email"
                                 value={email}
+                                className="form-control"
+                                placeholder="smith@gmail.com"
                                 onChange={e => setUserEmail(e.target.value)}
-                                required />
+                                required 
+                            />
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label className="col-sm-2 col-md-4 col-form-label">Password</label>
-                        <div className="col-sm-10 col-md-4">
+                        <label className="col-sm-2 col-md-4 col-form-label dark-purple font-weight-bold">Password</label>
+                        <div className="col-sm-10 col-md-8">
                             <input
                                 type="password"
                                 name="password"
                                 value={password}
+                                className="form-control"
+                                placeholder="********"
                                 onChange={e => setPassword(e.target.value)}
-                                required />
+                                required 
+                            />
                         </div>
                     </div>
-                    <div className="form-group row">
-                        <div className="col-sm-2 col-md-2 col-form-label"></div>
-                        <div className="col-sm-10 col-md-6">
+                    <div className="form-group row justify-content-center m-4">
+                        {/* <div className="col-sm-2 col-md-2 col-form-label"></div> */}
+                        <div className="col-sm-10 col-md-8">
                             <button className="btn btn-submit bg-yellow" type="submit" value="Login">Login</button>
                         </div>
                     </div>
-
                 </form>
             </div>
         </MainDiv>
