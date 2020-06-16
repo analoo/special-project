@@ -125,6 +125,9 @@ function Profile() {
 
                     </form>
                 </div>
+                <div className="foot-base">
+
+</div>
             </div>
 
     )

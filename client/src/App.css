@@ -93,3 +93,22 @@
   width: 50px;
   border-Radius: 5px
 }
+.foot-base{
+  height: 20vh
+}
+
+@media screen and (max-width: 400px) {
+  .footer {position: static}
+  .foot-base {height: 0vh}
+}
+
+.btn:hover{
+  color: #423BAD
+
+}
+
+.select-button{
+  border: none;
+  background-color: transparent;
+}
+

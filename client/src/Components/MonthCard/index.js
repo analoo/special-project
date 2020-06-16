@@ -22,10 +22,10 @@ function MonthCard(props) {
 
     return (
         <div className="card">
-            <div className="card-header bg-gray" id={"heading" + monthYear}>
+            <div className="card-header bg-muted" id={"heading" + monthYear} style={{border:"none"}}>
                 <h2 className="mb-0">
-                    <button className="btn btn-block text-left font-weight-bold collapsed" type="button" data-toggle="collapse" data-target={"#collapse" + monthYear} aria-expanded="false" aria-controls={"collapse" + monthYear}>
-                        {displayMonthYear}
+                    <button className="btn btn-block text-left font-weight-bold collapsed dark-purple" type="button" data-toggle="collapse" data-target={"#collapse" + monthYear} aria-expanded="false" aria-controls={"collapse" + monthYear}>
+                     <h4><i class="fas fa-caret-down dark-purple px-2"></i>{displayMonthYear}</h4>
                     </button>
                 </h2>
             </div>

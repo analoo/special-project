@@ -6,6 +6,7 @@ const keys = require("../private/keys")
 module.exports = {
 
     login: (req, res) => {
+        console.log(req.body)
         db.User.findOne({
             where: {
                 email: req.body.email

@@ -4,7 +4,7 @@ import AddForm from "../AddForm";
 function CheckInButton() {
     return (
         <div>
-            <button type="button" className="btn bg-dark-purple mr-2" data-toggle="modal" data-target="#staticBackdrop">
+            <button type="button" className="btn bg-yellow mr-2" data-toggle="modal" data-target="#staticBackdrop">
                 + New Activity
             </button>
 

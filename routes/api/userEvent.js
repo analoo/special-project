@@ -7,4 +7,8 @@ router
     .get(userEventController.findMonths)
     .put(userEventController.findByMonth)
 
+router
+    .route("/:eventId")
+    .get(userEventController.findSingleEvent)
+
 module.exports = router;

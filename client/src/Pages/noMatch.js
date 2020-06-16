@@ -4,6 +4,9 @@ function NoMatch(){
     return(
         <div>
             Sorry, No Match
+            <div className="foot-base">
+
+            </div>
         </div>
     )
 }

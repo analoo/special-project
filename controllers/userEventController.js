@@ -104,8 +104,36 @@ module.exports = {
                     res.send(userEvent)
                 }).catch(err => res.send(err))
         })
-    }
+    },
 
+    findSingleEvent: (req, res) => {
+        const cookieValues = req.headers.cookie.split(";");
+        let userSession = null;
+        cookieValues.forEach(element => {
+            if (element.split("=")[0].trim() === "footsteps_userSession") {
+                userSession = decodeURIComponent(element.split("=")[1].trim())
+            }
+        })
+        db.UserSession.findOne({
+            where: {
+                session: userSession
+            }
+        }).then(res1 => {
+            db.UserEvent
+                .findOne({
+                    where: {
+                        UserId: res1.UserId,
+                        id: req.params.eventId
+                    },
+                    include: [db.Event],
+                }).then(userEvent => {
+                    console.log(userEvent)
+                    res.send(userEvent)
+                }).catch(err => res.json(err))
+        }).catch(err => {
+            res.json(err)
+        })
+    },
 
 
 }
