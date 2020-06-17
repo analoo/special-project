@@ -8,6 +8,7 @@ function Profile() {
     const [city, setCity] = useState("")
     const [state, setState] = useState("")
     const [color, setColor] = useState("#928AFF");
+    const [covid, setCovid] = useState("");
 
     console.log(color)
 
@@ -20,6 +21,7 @@ function Profile() {
                 setCity(res.data.city)
                 setState(res.data.state)
                 setColor(res.data.color)
+                setCovid(res.data.covid)
             })
     }, [])
 
@@ -30,7 +32,8 @@ function Profile() {
             zipcode: zipCode,
             city: city,
             state: state,
-            color: color
+            color: color,
+            covid: covid
         }).then(res =>
             console.log(res.data))
 
@@ -144,14 +147,14 @@ function Profile() {
                             <label className="col-sm-4 col-form-label dark-purple font-weight-bold" style={{ color: color }}>Tested Positive for Coronovirus</label>
                             <div className="col-sm-8">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="virus" id="true" value="1"/>
-                                    <label class="form-check-label" for="virus">
+                                    <input class="form-check-input" type="radio" name="covid" id="true" value="1"/>
+                                    <label class="form-check-label" for="covid">
                                         TRUE
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="virus" id="false" value="1"/>
-                                    <label class="form-check-label" for="virus">
+                                    <input class="form-check-input" type="radio" name="covid" id="false" value="0"/>
+                                    <label class="form-check-label" for="covid">
                                         FALSE
                                     </label>
                                 </div>

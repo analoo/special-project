@@ -5,8 +5,8 @@ import CheckInButton from "../Components/Buttons/CheckInButton";
 function Activities(){
     return(
         <div>
-            <h1 className="my-3">Activities</h1>
-            <CheckInButton/>
+            {/* <h1 className="my-3">Activities</h1> */}
+            {/* <CheckInButton/> */}
             <MonthContainer/>
             <div className="foot-base">
 
