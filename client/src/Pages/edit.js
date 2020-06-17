@@ -77,21 +77,21 @@ function Edit(props) {
                 setOutside(res.data.outside)
                 setContact(res.data.contacts);
                 setEventID(res.data.Event.id)
-                if(res.data.startTime.split(":")[0] >= 13){
-                    let time = `${res.data.startTime.split(":")[0]-12}:${res.data.startTime.split(":")[1]}`
+                if (res.data.startTime.split(":")[0] >= 13) {
+                    let time = `${res.data.startTime.split(":")[0] - 12}:${res.data.startTime.split(":")[1]}`
                     setStartTime(time)
                     setStartOS("12")
                 }
-                else{
+                else {
                     setStartTime(`${res.data.startTime.split(":")[0]}:${res.data.startTime.split(":")[1]}`)
                     setStartOS("0")
                 }
-                if(res.data.endTime.split(":")[0] >= 13){
-                    let time = `${res.data.endTime.split(":")[0]-12}:${res.data.endTime.split(":")[1]}`
+                if (res.data.endTime.split(":")[0] >= 13) {
+                    let time = `${res.data.endTime.split(":")[0] - 12}:${res.data.endTime.split(":")[1]}`
                     setEndTime(time)
                     setEndOS("12")
                 }
-                else{
+                else {
                     setEndTime(`${res.data.endTime.split(":")[0]}:${res.data.endTime.split(":")[1]}`)
                     setEndOS("0")
                 }
@@ -120,10 +120,10 @@ function Edit(props) {
 
 
 
-        const eventBody = eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, refStart, refEnd, startDate, endDate, startDay, startMonth, startYear,eventId)
+        const eventBody = eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, refStart, refEnd, startDate, endDate, startDay, startMonth, startYear, eventId)
         console.log(eventBody)
 
-        API.updateEvent(id,eventBody)
+        API.updateEvent(id, eventBody)
             .then((res) => {
                 window.location.replace("/activities")
             })
@@ -291,8 +291,8 @@ function Edit(props) {
                         </div>
                         <hr />
                         <div className="card-body">
-                            <button type="button" className="btn bg-gray text-white float-right" onClick={e => window.location.replace("/activities")}>Cancel</button>
                             <button type="button" className="btn text-white float-right" style={{ backgroundColor: color }} onClick={event => handleAdd(event)}>Save</button>
+                            <button type="button" className="btn bg-gray text-white float-right" onClick={e => window.location.replace("/activities")}>Cancel</button>
                         </div>
                     </form>
                 </div>
