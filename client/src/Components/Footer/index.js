@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="footer bg-light-purple my-auto py-2 fixed-bottom">
         <div className="container">
-            <div className="d-md-flex flex-row">
+            {/* <div className="d-md-flex flex-row">
                 <div className="col text-center">
                     <h1 className="bg-white dark-purple p-3 my-4 rounded">foot<span className="purple">steps</span></h1>
                 </div>
@@ -43,8 +43,8 @@ function Footer() {
                     <div className="mb-2">
                         <a href="/" className="dark-purple">Contact</a>
                     </div>
-                </div>
-            </div>
+                </div> */}
+            {/* </div> */}
             <div class="footer-copyright text-center py-3 dark-purple">© 2020 Copyright
             </div>
         </div>

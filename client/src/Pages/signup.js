@@ -86,6 +86,8 @@ function Signup() {
                         </div>
                     </div>
                 </form>
+                <a href="/signin" type="button" className="dark-purple justify-content-center">Go back to Sign In</a>
+
             </div>
         </MainDiv>
     )

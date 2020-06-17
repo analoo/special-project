@@ -112,3 +112,9 @@
   background-color: transparent;
 }
 
+.home-images{
+  width: 80%;
+  height: 80%;
+  padding: auto; 
+  margin: auto
+}
