@@ -61,6 +61,7 @@ function Edit(props) {
             startDate: new Date(),
             endDate: null,
             key: 'selection'
+            
         }
     ]);
 
@@ -94,14 +95,15 @@ function Edit(props) {
                 else {
                     setEndTime(`${res.data.endTime.split(":")[0]}:${res.data.endTime.split(":")[1]}`)
                     setEndOS("0")
-                }                
+                }  
+            
+            
                 let dates = {
-                    startDate: new Date(res.data.startDate),
-                    endDate: new Date(res.data.endDate),
+                    startDate: new Date(moment.utc(res.data.startDate).year(), moment.utc(res.data.startDate).month(), moment.utc(res.data.startDate).date()),
+                    endDate: new Date(moment.utc(res.data.endDate).year(), moment.utc(res.data.endDate).month(), moment.utc(res.data.endDate).date()),
                     key: 'selection'
                 }
 
-                console.log(dates)
 
                 setState([dates])
 
