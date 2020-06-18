@@ -45,7 +45,7 @@ function Footer() {
                     </div>
                 </div> */}
             {/* </div> */}
-            <div class="footer-copyright text-center py-3 dark-purple">© 2020 Copyright
+            <div className="footer-copyright text-center py-3 dark-purple">© 2020 Copyright
             </div>
         </div>
         
