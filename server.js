@@ -8,8 +8,8 @@ const app = express();
 var PORT = process.env.PORT || 4000;
 
 
-// Static directory
-// app.use(express.static("public"));
+app.use(express.static("public"));
+
 
 // Require models
 const db = require("./models");
@@ -21,6 +21,7 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
   }
+
 
 
 
