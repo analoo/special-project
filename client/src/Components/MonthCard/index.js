@@ -25,7 +25,7 @@ function MonthCard(props) {
             <div className="card-header bg-muted" id={"heading" + monthYear} style={{border:"none"}}>
                 <h2 className="mb-0">
                     <button className="btn btn-block text-left font-weight-bold collapsed dark-purple" type="button" data-toggle="collapse" data-target={"#collapse" + monthYear} aria-expanded="false" aria-controls={"collapse" + monthYear}>
-                     <h4><i class="fas fa-caret-down dark-purple px-2"></i>{displayMonthYear}</h4>
+                     <h4><i className="fas fa-caret-down dark-purple px-2"></i>{displayMonthYear}</h4>
                     </button>
                 </h2>
             </div>
