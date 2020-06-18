@@ -41,7 +41,7 @@ module.exports = {
                 email: req.body.email,
                 password: hashedPassWord
             }).then(async function(userData){
-                let session = await bcrypt.hash(keys.cookie.keyWord,10)
+                let session = await bcrypt.hash("Trapezoid",10)
                 res.cookie("footsteps_userSession", session).send({code: 200,  message: "Welcome!", color: "green"})
                 db.UserSession.create({
                     UserId: userData.id,

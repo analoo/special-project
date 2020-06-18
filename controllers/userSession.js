@@ -1,9 +1,9 @@
 const db = require("../models")
-const keys = require("../private/keys")
+// const keys = require("../private/keys")
 
 module.exports = {
     create: async function(req,res){
-        let session = await bcrypt.hash(keys.cookie.keyWord,10)
+        let session = await bcrypt.hash("Trapezoid",10)
         res.cookie("footsteps_userSession", session).send({code: 200})
         db.UserSession.create({
             UserId: req.body.id,
