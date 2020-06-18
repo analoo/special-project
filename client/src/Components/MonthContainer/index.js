@@ -8,7 +8,6 @@ function MonthContainer() {
 
     useEffect(() => {
         API.userMonths().then(res => {
-            console.log(res.data)
             setMonths(res.data)
         }).catch(err => 
             console.log(err))

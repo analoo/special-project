@@ -43,35 +43,35 @@ function EventCard(props) {
                         </div>
                     </div>
                     <div>
-                    <button className="float-right select-button" id={`delete-${props.data.id}`}  value={props.data.id} onClick={e => deleteEvent(props.data.id)}><i class="far fa-trash-alt pt-2 px-2 dark-purple"></i></button>
+                    <button className="float-right select-button" id={`delete-${props.data.id}`}  value={props.data.id} onClick={e => deleteEvent(props.data.id)}><i className="far fa-trash-alt pt-2 px-2 dark-purple"></i></button>
                     <a href={(`/activities/${props.data.id}`)} type="button" className="float-right select-button" id={`update-${props.data.id}`} value={props.data.id} onClick={e => console.log("edit")}><i className="fas fa-edit float-right pt-2 px-2 dark-purple"></i></a>
                     </div>
 
-                    <div className="card-body m-3" >
+                    <div className="card-body pl-5" >
                         <div className="row" style={{ fontSize: "larger" }}>
                             <div className="col-md-9 col-sm-9" style={{ margin: "none", padding: "none", verticalAlign: "middle" }}>
-                                <i class="far fa-clock float-left"></i>
+                                <i className="far fa-clock float-left"></i>
                                 <p className="text-left float-left px-2">{moment.utc(props.data.startDate).format("MMM DD")}, {props.data.startTime.split(":")[0] > 12 ? `${props.data.startTime.split(":")[0]-12}:${props.data.startTime.split(":")[1]} PM` : `${props.data.startTime.split(":")[0]}:${props.data.startTime.split(":")[1]} AM`} - {moment.utc(props.data.endDate).format("MMM DD")}, {props.data.endTime.split(":")[0] > 12 ? `${props.data.endTime.split(":")[0]-12}:${props.data.endTime.split(":")[1]} PM` : `${props.data.endTime.split(":")[0]}:${props.data.endTime.split(":")[1]} AM`}</p>
                             </div>
                         </div>
 
                         <div className="row" style={{ fontSize: "larger" }}>
                             <div className="col-md-9 col-sm-9" style={{ margin: "none", padding: "none", verticalAlign: "middle" }}>
-                                <i class="fas fa-map-marker-alt float-left"></i>
+                                <i className="fas fa-map-marker-alt float-left"></i>
                                 <p className="text-left float-left px-2">{props.data.Event.location}</p>
                             </div>
                         </div>
 
                         <div className="row" style={{ fontSize: "larger" }}>
                             <div className="col-md-9 col-sm-9" style={{ margin: "none", padding: "none", verticalAlign: "middle" }}>
-                                <i class="far fa-sticky-note float-left"></i>
+                                <i className="far fa-sticky-note float-left"></i>
                                 <p className="text-left float-left px-2">{props.data.notes}</p>
                             </div>
                         </div>
 
                         <div className="row" style={{ fontSize: "larger" }}>
                             <div className="col-md-9 col-sm-9" style={{ margin: "none", padding: "none", verticalAlign: "middle" }}>
-                                <i class="fas fa-users float-left"></i>
+                                <i className="fas fa-users float-left"></i>
                                 <p className="text-left float-left px-2">{props.data.contacts}</p>
                             </div>
                         </div>

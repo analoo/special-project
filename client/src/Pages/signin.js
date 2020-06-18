@@ -4,7 +4,7 @@ import API from "../Utils/API"
 import MainDiv from "../Components/Container/main-Div"
 
 
-function Login() {
+function Signin() {
 
     const [email, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -12,7 +12,7 @@ function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        API.login({
+        API.signIn({
             email: email,
             password: password,
         }).then(res => {
@@ -36,7 +36,7 @@ function Login() {
                 <div className="alert" role="alert" style={{display: "inline-block" , color: "red", backgroundColor: "pink", width: "100%"}}>
                     {error}
                 </div>}
-            <form onSubmit={handleSubmit}>
+            <form className="m-4" onSubmit={handleSubmit}>
                 
                 <div className="form-group row">
                     <label className="col-sm-2 col-md-4 col-form-label dark-purple font-weight-bold">Email</label>
@@ -58,7 +58,6 @@ function Login() {
                             name="password"
                             value={password}
                             className="form-control"
-                            placeholder="********"
                             onChange={e => setPassword(e.target.value)} />
                     </div>
                 </div>
@@ -67,7 +66,7 @@ function Login() {
                 {/* <div className="col-sm-2 col-md-2 col-form-label">
                 </div> */}
                 <div className="col-sm-10 col-md-8">
-                    <button className="btn btn-submit bg-yellow" type="submit" value="Login">Sign In</button>
+                    <button className="btn btn-submit bg-yellow" type="submit" value="Signin">Sign In</button>
                 </div>
             </div>
             </form>
@@ -79,4 +78,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Signin;
