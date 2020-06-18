@@ -42,7 +42,7 @@ function eventJSON(color, activityName, location, notes, mask, sixFeet, outside,
 function Edit(props) {
     const [id, setId] = useState("")
     const [eventId, setEventID] = useState("")
-    const [color, setColor] = useState("#928AFF");
+    const [color, setColor] = useState("");
     const [activityName, setActivityName] = useState("");
     const [location, setLocation] = useState("");
     const [notes, setNotes] = useState("");
@@ -99,7 +99,7 @@ function Edit(props) {
                 // // endDate: endDate,
 
             })
-    }, [color])
+    }, [])
 
     const handleAdd = (event) => {
         event.preventDefault();
@@ -151,7 +151,7 @@ function Edit(props) {
                     <div className="btn-group">
                         <button type="button" className="btn border text-white dropdown-toggle" style={{ backgroundColor: color }} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Color
-                            </button>
+                        </button>
                         <div className="dropdown-menu">
                             <a className="dropdown-item purple-heart" href="#" id="purple" value="purple" onClick={(event) => setColor(colors["purple"])}>
                                 <span role="img" aria-label="purple heart">💜</span> Purple
@@ -202,7 +202,7 @@ function Edit(props) {
                         <div className="mb-4">
                             <h4 className="text-left" style={{ color: color }}>When?</h4>
                             <div className="row mb-4 px-4">
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="col-md-4">
                                         <label className="float-left" htmlFor="startTime">Start Time</label>
                                     </div>
@@ -223,7 +223,7 @@ function Edit(props) {
                                     </div>
                                 </div>
 
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="col-md-4">
                                         <label className="float-left" htmlFor="endTime">End Time</label>
                                     </div>

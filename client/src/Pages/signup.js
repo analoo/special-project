@@ -29,7 +29,7 @@ function Signup() {
     return (
         <MainDiv>
         <div className="col-md-6 col-sm-10 border rounded" id="bg-img" style={{border: "solid grey 1px", padding: "20px", top: "50px", height: "100%", verticalAlign: "middle"}}>
-            <h3 class="card-title dark-purple">Sign Up</h3>
+            <h3 className="card-title dark-purple">Sign Up</h3>
             {error === "" ?
                 <div className="alert" style={{display: "inline-block"}}></div> 
                 : 
@@ -37,7 +37,7 @@ function Signup() {
                         {error}
                     </div>
                 }                
-                <form onSubmit={handleSubmit}>
+                <form className="m-4" onSubmit={handleSubmit}>
                     <div className="form-group row">
                         <label className="col-sm-2 col-md-4 col-form-label dark-purple font-weight-bold">Name</label>
                         <div className="col-sm-10 col-md-8">
@@ -73,7 +73,6 @@ function Signup() {
                                 name="password"
                                 value={password}
                                 className="form-control"
-                                placeholder="********"
                                 onChange={e => setPassword(e.target.value)}
                                 required 
                             />
@@ -82,7 +81,7 @@ function Signup() {
                     <div className="form-group row justify-content-center m-4">
                         {/* <div className="col-sm-2 col-md-2 col-form-label"></div> */}
                         <div className="col-sm-10 col-md-8">
-                            <button className="btn btn-submit bg-yellow" type="submit" value="Login">Sign Up</button>
+                            <button className="btn btn-submit bg-yellow" type="submit" value="Signup">Sign Up</button>
                         </div>
                     </div>
                 </form>

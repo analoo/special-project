@@ -3,7 +3,7 @@ import AddForm from "../AddForm";
 
 function CheckInButton() {
     return (
-        <div>
+        <div className="nav-link">
             <button type="button" className="btn bg-yellow mr-2" data-toggle="modal" data-target="#staticBackdrop">
                 + New Activity
             </button>
