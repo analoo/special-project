@@ -37,7 +37,7 @@ function NavBar() {
                 :
                 <nav className="navbar navbar-expand-lg navbar-light" style={{ borderBottom: "solid 5px #BFBFBF" }}>
                     <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
-                        <img className="navbar-brand" src="/footsteps4.png" alt="footsteps logo" style={{ width: "60px" }} />
+                        <img className="navbar-brand" src="/footsteps4.svg" alt="footsteps logo" style={{ width: "60px" }} />
                     </Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
