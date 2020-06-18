@@ -46,8 +46,8 @@ function AddForm() {
     const [sixFeet, setSixFeet] = useState(0);
     const [outside, setOutside] = useState(0);
     const [contact, setContact] = useState("");
-    const [startOS, setStartOS] = useState(0)
-    const [endOS, setEndOS] = useState(0)
+    const [startOS, setStartOS] = useState("0")
+    const [endOS, setEndOS] = useState("0")
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
     const [allDay, setAllDay] = useState("");
