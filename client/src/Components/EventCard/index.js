@@ -5,11 +5,11 @@ var moment = require('moment');
 
 
 function EventCard(props) {
-    const [remove, setRemove] = useState(0)
+ 
 
     const deleteEvent = (event) => {
-        console.log("You tried to delete me!")
-        if(remove){
+        let deleteConfirm = window.confirm("Are you sure you want to delete this record?")
+        if(deleteConfirm){
             API.deleteEvent(event).then(res => {
                 if(res.data === 1){
                     window.location.reload();
@@ -17,10 +17,6 @@ function EventCard(props) {
             })
         }
     }
-
-    useEffect(() => {
-        setRemove(0)
-    }, [])
 
 
     return (
