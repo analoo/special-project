@@ -14,7 +14,7 @@ export default {
         return axios.put("/api/user", user)
     },
 
-    login: function(user){
+    signIn: function(user){
         console.log(user)
         return axios.post("/auth", user)
 
