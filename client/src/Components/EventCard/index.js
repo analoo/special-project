@@ -47,32 +47,42 @@ function EventCard(props) {
                     <a href={(`/activities/${props.data.id}`)} type="button" className="float-right select-button" id={`update-${props.data.id}`} value={props.data.id} onClick={e => console.log("edit")}><i className="fas fa-edit float-right pt-2 px-2 dark-purple"></i></a>
                     </div>
 
-                    <div className="card-body pl-5" >
+                    <div className="card-body" style={{ fontSize: "larger" }}>
+                        <div className="row">
+                            <div className="col-md-1 text-sm-left text-md-center">
+                                <i className="far fa-clock"></i>
+                            </div>
+                            <div className="col-md-11">
+                                <h6 className="float-left text-sm-left text-md-center">{moment.utc(props.data.startDate).format("MMM DD")}, {props.data.startTime.split(":")[0] > 12 ? `${props.data.startTime.split(":")[0]-12}:${props.data.startTime.split(":")[1]} PM` : `${props.data.startTime.split(":")[0]}:${props.data.startTime.split(":")[1]} AM`} - {moment.utc(props.data.endDate).format("MMM DD")}, {props.data.endTime.split(":")[0] > 12 ? `${props.data.endTime.split(":")[0]-12}:${props.data.endTime.split(":")[1]} PM` : `${props.data.endTime.split(":")[0]}:${props.data.endTime.split(":")[1]} AM`}</h6>
+                            </div>
+                            
+                        </div>
+
                         <div className="row" style={{ fontSize: "larger" }}>
-                            <div className="col-md-9 col-sm-9" style={{ margin: "none", padding: "none", verticalAlign: "middle" }}>
-                                <i className="far fa-clock float-left"></i>
-                                <p className="text-left float-left px-2">{moment.utc(props.data.startDate).format("MMM DD")}, {props.data.startTime.split(":")[0] > 12 ? `${props.data.startTime.split(":")[0]-12}:${props.data.startTime.split(":")[1]} PM` : `${props.data.startTime.split(":")[0]}:${props.data.startTime.split(":")[1]} AM`} - {moment.utc(props.data.endDate).format("MMM DD")}, {props.data.endTime.split(":")[0] > 12 ? `${props.data.endTime.split(":")[0]-12}:${props.data.endTime.split(":")[1]} PM` : `${props.data.endTime.split(":")[0]}:${props.data.endTime.split(":")[1]} AM`}</p>
+                            <div className="col-md-1 text-sm-left text-md-center">
+                                <i className="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div className="col-md-11">
+                                <h6 className="float-left text-sm-left text-md-center">{props.data.Event.location}</h6>
                             </div>
                         </div>
 
                         <div className="row" style={{ fontSize: "larger" }}>
-                            <div className="col-md-9 col-sm-9" style={{ margin: "none", padding: "none", verticalAlign: "middle" }}>
-                                <i className="fas fa-map-marker-alt float-left"></i>
-                                <p className="text-left float-left px-2">{props.data.Event.location}</p>
+                            <div className="col-md-1 text-sm-left text-md-center">
+                                <i className="far fa-sticky-note"></i>
+                            </div>
+                            <div className="col-md-11">
+                                <h6 className="float-left text-sm-left text-md-center">{props.data.notes}
+                                </h6>
                             </div>
                         </div>
 
                         <div className="row" style={{ fontSize: "larger" }}>
-                            <div className="col-md-9 col-sm-9" style={{ margin: "none", padding: "none", verticalAlign: "middle" }}>
-                                <i className="far fa-sticky-note float-left"></i>
-                                <p className="text-left float-left px-2">{props.data.notes}</p>
+                            <div className="col-md-1 text-sm-left text-md-center">
+                                <i className="fas fa-users"></i> 
                             </div>
-                        </div>
-
-                        <div className="row" style={{ fontSize: "larger" }}>
-                            <div className="col-md-9 col-sm-9" style={{ margin: "none", padding: "none", verticalAlign: "middle" }}>
-                                <i className="fas fa-users float-left"></i>
-                                <p className="text-left float-left px-2">{props.data.contacts}</p>
+                            <div className="col-md-11">
+                                <h6 className="float-left text-sm-left text-md-center">{props.data.contacts}</h6>
                             </div>
                         </div>
                     </div>
