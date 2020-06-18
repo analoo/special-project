@@ -8,7 +8,7 @@ import Home from "../../Pages/home";
 import NoMatch from "../../Pages/noMatch";
 import Profile from "../../Pages/profile";
 import Activities from "../../Pages/activities";
-import Login from "../../Pages/login";
+import Signin from "../../Pages/signin";
 import Signup from "../../Pages/signup";
 import Edit from "../../Pages/edit"
 
@@ -32,7 +32,7 @@ function Router() {
                 </Switch> :
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/signin" component={Login} />
+                    <Route exact path="/signin" component={Signin} />
                     <Route exact path="/signup" component={Signup} />
                     <Route component={NoMatch} />
                 </Switch>}
