@@ -5,7 +5,7 @@ const keys = require("../private/keys")
 
 module.exports = {
 
-    login: (req, res) => {
+    signin: (req, res) => {
         console.log(req.body)
         db.User.findOne({
             where: {
@@ -42,7 +42,7 @@ module.exports = {
             });
     },
 
-    logout: (req, res) => {
+    signout: (req, res) => {
         const cookieValues = req.headers.cookie.split(";");
         res.clearCookie("footsteps_userSession");
         res.send(200)
