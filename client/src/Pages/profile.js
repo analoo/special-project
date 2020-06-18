@@ -25,7 +25,6 @@ function Profile() {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        setDisplay("true");
         API.updateUser({
             name: name,
             // zipcode: zipCode,
