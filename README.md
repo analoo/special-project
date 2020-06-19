@@ -9,7 +9,12 @@ This project was built in less than two weeks for Girls In Tech Hackathon relate
 
 
 ## Site Image
-![site](#)
+Home Page
+![homepage](/client/public/homepage.gif)
+Add A New Activity
+![Add](/client/public/addActivity.gif)
+View and Edit Existing Activity
+![Add](/client/public/viewActivity.gif)
 
 ## Table of Contents
 
@@ -52,6 +57,7 @@ bcrypt
 chalk
 concurrently
 express
+fs
 if-env
 moment
 mysql2

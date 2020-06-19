@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import CalendarForm from "../CalendarForm";
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import API from "../Utils/API";
 import MainDiv from "../Components/Container/main-Div"
-
 var moment = require("moment");
 
 let colors = {
@@ -97,20 +95,15 @@ function Edit(props) {
                     setEndOS("0")
                 }  
             
-            
-                let dates = {
+                // dates need to be parsed in UTC to get it to the correct format for the calendar.
+                setState([{
                     startDate: new Date(moment.utc(res.data.startDate).year(), moment.utc(res.data.startDate).month(), moment.utc(res.data.startDate).date()),
                     endDate: new Date(moment.utc(res.data.endDate).year(), moment.utc(res.data.endDate).month(), moment.utc(res.data.endDate).date()),
                     key: 'selection'
-                }
-
-
-                setState([dates])
+                }])
 
             })
     }, [])
-
-    console.log(state)
 
     const handleAdd = (event) => {
         event.preventDefault();
@@ -132,7 +125,6 @@ function Edit(props) {
 
 
         const eventBody = eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, refStart, refEnd, startDate, endDate, startDay, startMonth, startYear, eventId)
-        console.log(eventBody)
 
         API.updateEvent(id, eventBody)
             .then((res) => {
@@ -141,9 +133,6 @@ function Edit(props) {
             .catch(error => {
                 console.log(error)
             })
-
-        // Close modal
-        // data-dismiss="modal"
     }
 
     const onChangeTimeHandler = () => {
@@ -156,7 +145,6 @@ function Edit(props) {
 
     return (
         <MainDiv>
-
             <div className="card">
                 <div className="card-header">
                     <div className="btn-group">
