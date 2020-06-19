@@ -46,15 +46,15 @@ function AddForm() {
     const [sixFeet, setSixFeet] = useState(0);
     const [outside, setOutside] = useState(0);
     const [contact, setContact] = useState("");
-    const [startOS, setStartOS] = useState(0)
-    const [endOS, setEndOS] = useState(0)
+    const [startOS, setStartOS] = useState("0")
+    const [endOS, setEndOS] = useState("0")
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
     const [allDay, setAllDay] = useState("");
     const [state, setState] = useState([
         {
             startDate: new Date(),
-            endDate: null,
+            endDate: new Date(),
             key: 'selection'
         }
     ]);
@@ -140,7 +140,7 @@ function AddForm() {
                                     </a>
                                 </div>
                             </div>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" onClick={(e) => window.location.reload()} className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -278,7 +278,7 @@ function AddForm() {
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn bg-gray text-white" data-dismiss="modal">Cancel</button>
+                            <button type="button" className="btn bg-gray text-white" data-dismiss="modal" onClick={(e) => window.location.reload()} >Cancel</button>
                             <button type="submit" className="btn text-white" style={{ backgroundColor: color }} onClick={(event) => handleAdd(event)}>Save</button>
                         </div>
                     </form>

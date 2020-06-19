@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import CalendarForm from "../CalendarForm";
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import API from "../Utils/API";
 import MainDiv from "../Components/Container/main-Div"
-
 var moment = require("moment");
 
 let colors = {
@@ -61,6 +59,7 @@ function Edit(props) {
             startDate: new Date(),
             endDate: null,
             key: 'selection'
+            
         }
     ]);
 
@@ -94,9 +93,14 @@ function Edit(props) {
                 else {
                     setEndTime(`${res.data.endTime.split(":")[0]}:${res.data.endTime.split(":")[1]}`)
                     setEndOS("0")
-                }
-                // setState({startDate: res.data.startDate, endDate: res.data.endDate, key:"selection"})
-                // // endDate: endDate,
+                }  
+            
+                // dates need to be parsed in UTC to get it to the correct format for the calendar.
+                setState([{
+                    startDate: new Date(moment.utc(res.data.startDate).year(), moment.utc(res.data.startDate).month(), moment.utc(res.data.startDate).date()),
+                    endDate: new Date(moment.utc(res.data.endDate).year(), moment.utc(res.data.endDate).month(), moment.utc(res.data.endDate).date()),
+                    key: 'selection'
+                }])
 
             })
     }, [])
@@ -121,7 +125,6 @@ function Edit(props) {
 
 
         const eventBody = eventJSON(color, activityName, location, notes, mask, sixFeet, outside, contact, refStart, refEnd, startDate, endDate, startDay, startMonth, startYear, eventId)
-        console.log(eventBody)
 
         API.updateEvent(id, eventBody)
             .then((res) => {
@@ -130,9 +133,6 @@ function Edit(props) {
             .catch(error => {
                 console.log(error)
             })
-
-        // Close modal
-        // data-dismiss="modal"
     }
 
     const onChangeTimeHandler = () => {
@@ -145,7 +145,6 @@ function Edit(props) {
 
     return (
         <MainDiv>
-
             <div className="card">
                 <div className="card-header">
                     <div className="btn-group">
@@ -201,53 +200,70 @@ function Edit(props) {
                         {/* When Section */}
                         <div className="mb-4">
                             <h4 className="text-left" style={{ color: color }}>When?</h4>
-                            <div className="row mb-4 px-4">
-                                <div className="form-row">
-                                    <div className="col-md-4">
-                                        <label className="float-left" htmlFor="startTime">Start Time</label>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <input type="text" className="form-control" placeholder="08:00" value={startTime} onChange={(event) => setStartTime(event.target.value)} />
-                                    </div>
-                                    <div className="col-md-3">
-                                        {startOS === "0" ?
-                                            <select className="form-control" id="exampleFormControlSelect1" onChange={e => setStartOS(e.target.value)}>
-                                                <option value="0">AM</option>
-                                                <option value="12" >PM</option>
-                                            </select> :
-                                            <select className="form-control" id="exampleFormControlSelect1" onChange={e => setStartOS(e.target.value)}>
-                                                <option value="12">PM</option>
-                                                <option value="0" >AM</option>
-                                            </select>}
-
-                                    </div>
+                            <div className="form-row mb-1 px-4">
+                                <div className="col-md-3">
+                                    <label className="float-left" htmlFor="startTime">Start Time</label>
                                 </div>
-
-                                <div className="form-row">
-                                    <div className="col-md-4">
-                                        <label className="float-left" htmlFor="endTime">End Time</label>
-                                    </div>
-
-                                    <div className="col-md-3">
-                                        <input type="text" className="form-control" placeholder="09:00" value={endTime} onChange={(event) => setEndTime(event.target.value)} />
-                                    </div>
-                                    <div className="col-md-3">
-                                        {endOS === "0" ?
-                                            <select className="form-control" id="exampleFormControlSelect1" onChange={e => setEndOS(e.target.value)}>
-                                                <option value="0">AM</option>
-                                                <option value="12" >PM</option>
-                                            </select> :
-                                            <select className="form-control" id="exampleFormControlSelect1" onChange={e => setEndOS(e.target.value)}>
-                                                <option value="12">PM</option>
-                                                <option value="0" >AM</option>
-                                            </select>}
-
-                                    </div>
+                                <div className="col-md-3">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        className={startTime.length !== 5 ? "is-invalid form-control" : "is-valid form-control"}
+                                        placeholder="08:00"
+                                        name="startTime"
+                                        value={startTime}
+                                        maxLength="5"
+                                        minLength="5"
+                                        data-bv-stringlength-message="The start date must must be 5 characters"
+                                        onChange={(event) => setStartTime(event.target.value)}
+                                        required />
                                 </div>
-                                <div className="col-1 mt-4 font-weight-bold">
+                                <div className="col-md-3">
+                                    {startOS === "0" ?
+                                        <select className="form-control" id="exampleFormControlSelect1" onChange={e => setStartOS(e.target.value)}>
+                                            <option value="0">AM</option>
+                                            <option value="12" >PM</option>
+                                        </select> :
+                                        <select className="form-control" id="exampleFormControlSelect1" onChange={e => setStartOS(e.target.value)}>
+                                            <option value="12">PM</option>
+                                            <option value="0" >AM</option>
+                                        </select>}
+                                </div>
+                                <div className="col-md-3 font-weight-bold">
                                     <p>OR</p>
                                 </div>
-                                <div className="col-3 mt-4">
+                            </div>
+                            <div className="form-row mb-4 px-4">
+                                <div className="col-md-3">
+                                    <label className="float-left" htmlFor="endTime">End Time</label>
+                                </div>
+
+                                <div className="col-md-3">
+                                    <input
+                                        type="text"
+                                        className={endTime.length !== 5 ? "is-invalid form-control" : "is-valid form-control"}
+                                        placeholder="09:00"
+                                        name="endTime"
+                                        value={endTime}
+                                        maxLength="5"
+                                        minLength="5"
+                                        data-bv-stringlength-message="The start date must must be 5 characters"
+                                        onChange={(event) => setEndTime(event.target.value)}
+                                        required />
+                                </div>
+                                <div className="col-md-3">
+                                    {endOS === "0" ?
+                                        <select className="form-control" id="exampleFormControlSelect1" onChange={e => setEndOS(e.target.value)}>
+                                            <option value="0">AM</option>
+                                            <option value="12" >PM</option>
+                                        </select> :
+                                        <select className="form-control" id="exampleFormControlSelect1" onChange={e => setEndOS(e.target.value)}>
+                                            <option value="12">PM</option>
+                                            <option value="0" >AM</option>
+                                        </select>}
+
+                                </div>
+                                <div className="col-md-3">
                                     <div className="form-check">
                                         <input className="form-check-input" type="checkbox" id="allDay" value={allDay} onChange={(event) => onChangeTimeHandler(event.target.value)} />
                                         <label className="form-check-label" htmlFor="allDay">
@@ -272,20 +288,8 @@ function Edit(props) {
                         <div className="mb-4">
                             <h4 className="text-left" style={{ color: color }}>Who?</h4>
                             <div className="row form-group">
-                                <div className="col-8">
-                                    <label className="float-left" htmlFor="contact">Contacts</label>
-                                    <textarea className="form-control" id="contact" name="contact" rows="2" placeholder="Ana, Leila, Nadine" value={contact} onChange={(event) => setContact(event.target.value)}></textarea>
-                                </div>
-                                <div className="col-1 mt-5 font-weight-bold">
-                                    <p>OR</p>
-                                </div>
-                                <div className="col-3 mt-5">
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" id="solo" name="solo" onChange={(event) => setContact("None")} />
-                                        <label className="form-check-label" htmlFor="solo">
-                                            None
-                                            </label>
-                                    </div>
+                                <div className="col-12">
+                                    <textarea className="form-control" id="contact" name="contact" rows="2" placeholder="Contacts" value={contact} onChange={(event) => setContact(event.target.value)}></textarea>
                                 </div>
                             </div>
                         </div>

@@ -5,11 +5,11 @@ var moment = require('moment');
 
 
 function EventCard(props) {
-    const [remove, setRemove] = useState(0)
+ 
 
     const deleteEvent = (event) => {
-        console.log("You tried to delete me!")
-        if(remove){
+        let deleteConfirm = window.confirm("Are you sure you want to delete this record?")
+        if(deleteConfirm){
             API.deleteEvent(event).then(res => {
                 if(res.data === 1){
                     window.location.reload();
@@ -17,10 +17,6 @@ function EventCard(props) {
             })
         }
     }
-
-    useEffect(() => {
-        setRemove(0)
-    }, [])
 
 
     return (
@@ -72,8 +68,7 @@ function EventCard(props) {
                                 <i className="far fa-sticky-note"></i>
                             </div>
                             <div className="col-md-11">
-                                <h6 className="float-left text-sm-left text-md-center">{props.data.notes}
-                                </h6>
+                                 <h6 className="float-left text-sm-left text-md-center">{props.data.notes.length > 0 ? props.data.notes : "n/a"}</h6>
                             </div>
                         </div>
 
@@ -82,7 +77,7 @@ function EventCard(props) {
                                 <i className="fas fa-users"></i> 
                             </div>
                             <div className="col-md-11">
-                                <h6 className="float-left text-sm-left text-md-center">{props.data.contacts}</h6>
+                                <h6 className="float-left text-sm-left text-md-center">{props.data.contacts.length > 0 ? props.data.contacts : "none" }</h6>
                             </div>
                         </div>
                     </div>
