@@ -54,7 +54,7 @@ function AddForm() {
     const [state, setState] = useState([
         {
             startDate: new Date(),
-            endDate: null,
+            endDate: new Date(),
             key: 'selection'
         }
     ]);
