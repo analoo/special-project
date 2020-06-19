@@ -27,7 +27,6 @@ module.exports = function(sequelize, DataTypes) {
         contacts: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: "none"
         },
 
         mask: {
@@ -48,7 +47,6 @@ module.exports = function(sequelize, DataTypes) {
         notes: {
             type: DataTypes.STRING,
             allowNull: true,
-            defaultValue: "none"
         },
         startMonth: {
             type: DataTypes.INTEGER
